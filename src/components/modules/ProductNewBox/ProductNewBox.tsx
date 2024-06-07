@@ -11,7 +11,9 @@ function ProductNewBox({ id, title, bgColor, price, img }: ProductsType) {
       {/* desc */}
       <div className="flex w-28 xs:w-32 lg:w-[200px] h-32 flex-col items-center justify-between">
         {/* title */}
-        <div className="text-xs xs:text-sm text-primryBlack line-clamp-1">{title}</div>
+        <div className="text-xs xs:text-sm text-primryBlack line-clamp-1">
+          {title}
+        </div>
         {/* color */}
         <div className="flex items-center justify-center gap-x-1">
           {bgColor && bgColor.length > 0
