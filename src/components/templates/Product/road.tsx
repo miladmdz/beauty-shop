@@ -14,11 +14,9 @@ function Road({ route }: RoadProps) {
       <div className="flex items-center text-green-500">
         <IoHomeOutline />
         <Link href={"/"}>خانه</Link>
-        <span className="text-black px-2"> / </span>
-        <Link href={""}>{route.split("/")[0]}</Link>
       </div>
       <span className="text-black px-2">/</span>
-      <Link href={""} className="text-primryBlack">{route.split("/")[1]}</Link>
+      <Link href={""} className="text-primryBlack">{route.split("/")[0]}</Link>
     </div>
     </>
   );
