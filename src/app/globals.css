@@ -141,5 +141,63 @@
     display: block;
     animation: fadeInFromNone 0.5s ease-out;
   }
+  @keyframes fadeToLeft {
+    0% {
+      transform: translate(0,0);
+    }
+    100% {
+      transform: translate(-100%,0);
+    }
+  }
+  .fade_to_left{
+    position: absolute;
+    transform: translate(-100%,0%);
+    animation: fadeToLeft 0.5s ease;
+  }
+  @keyframes fadeToRight {
+    0% {
+      transform: translate(-100%,0);
+    }
+    100% {
+      transform: translate(0,0);
+    }
+  }
+  .fade_to_right{
+    position: absolute;
+    transform: translate(0%,0%);
+    animation: fadeToRight 0.5s ease;
+  }
+  /* input */
+  .special_input::-webkit-slider-runnable-track {
+    background: #f96;
+    cursor: pointer;
+    height: 4px;
+    border-radius: 10%;
+  }
+  .special_input::-moz-range-track {
+    background: #f96;
+    height: 0.5rem;
+  }
+  .special_input::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin: -6px;
+    width: 100%;
+    background-color:#000 ;
+  }
+  .special_input::-moz-range-thumb {
+    -moz-appearance: none;
+    appearance: none;
+    margin: -6px;
+    background-color:#000 ;
+  }
+  .special_input::-ms-track {
+    width: 100%;
+    cursor: pointer;
 
+    /* Hides the slider so custom styles can be added */
+    background: #f96;
+    border-color: #f96;
+    color: #f96;
+  }
 }
