@@ -23,6 +23,7 @@ const config: Config = {
       colors:{
         primryBlack:"#212529",
         primryGray:"#6c757d",
+        primryGreen:"#198754",
         primryYellow:"#ffc107",
         primryRed:"#dc3545",
         primryPink:"#d63384",
