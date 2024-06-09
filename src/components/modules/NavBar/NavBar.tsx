@@ -21,11 +21,12 @@ function NavBar() {
     "محصولات مراقبت از پوست"
   );
   const [selectProductsMobile, setSelectProductsMobile] = useState<string>("");
+  const [scroll, setScroll] = useState<number>(0);
 
   useEffect(() => {
     const fixNavBarToTop = () => {
-      const currentScroll = window.scrollY;
-      if (currentScroll >= 105) {
+      setScroll(window.scrollY);
+      if (scroll >= 105) {
         setFixTop(true);
         setToggleMenu(false);
         setToggleMenuMobile(false);
@@ -47,10 +48,14 @@ function NavBar() {
   };
 
   useEffect(() => {
-    if (toggleMenuMobile) {
-      document.body.classList.add("overflow-hidden");
+    if (scroll > 0) {
+      scrollToTopHandler();
     } else {
-      document.body.classList.remove("overflow-hidden");
+      if (toggleMenuMobile) {
+        document.body.classList.add("overflow-hidden");
+      } else {
+        document.body.classList.remove("overflow-hidden");
+      }
     }
   }, [toggleMenuMobile]);
 
