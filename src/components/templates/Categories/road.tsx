@@ -9,7 +9,7 @@ type RoadProps = {
 function Road({ route }: RoadProps) {
   return (
     <>
-      <div className="container flex items-center py-10">
+      <div className="container text-xs xs:text-base flex items-center py-10">
         <div className="flex items-center text-green-500">
           <IoHomeOutline />
           <Link href={"/"}>خانه</Link>
