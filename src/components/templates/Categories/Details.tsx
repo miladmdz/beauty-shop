@@ -54,7 +54,7 @@ function Details({ products }: DetailsProps) {
       <div className="container h-fit mb-5">
         {/* title */}
         <div>
-          <h1 className="text-primryCream text-5xl font-bold">کرم ضد لک</h1>
+          <h1 className="text-primryCream text-3xl xl:text-5xl font-bold">کرم ضد لک</h1>
         </div>
         {/* details */}
         <div className="flex flex-col md:flex-row items-start">
@@ -66,7 +66,7 @@ function Details({ products }: DetailsProps) {
                 onClick={() => toggleHandler("price")}
                 className="w-full flex items-center justify-between cursor-pointer"
               >
-                <div className="font-bold text-lg">فیلتر بر اساس قیمت</div>
+                <div className="font-bold text-base xl:text-lg">فیلتر بر اساس قیمت</div>
                 <div className="text-xl text-primryCream">
                   <FaPlus
                     className={`${
@@ -124,7 +124,7 @@ function Details({ products }: DetailsProps) {
                 onClick={() => toggleHandler("brand")}
                 className="w-full flex items-center justify-between cursor-pointer"
               >
-                <div className="font-bold text-lg">فیلتر براساس برندها</div>
+                <div className="font-bold text-base xl:text-lg">فیلتر براساس برندها</div>
                 <div className="text-xl text-primryCream">
                   <FaPlus
                     className={`${
@@ -148,7 +148,7 @@ function Details({ products }: DetailsProps) {
                 <div>
                   <div className="flex items-center justify-between border border-primryGray/50">
                     <input
-                      className="w-full h-10"
+                      className="w-full h-10 text-sm xl:text-base"
                       type="text"
                       placeholder="جستجو برند ,مثلا :AVENE"
                     />
@@ -165,75 +165,75 @@ function Details({ products }: DetailsProps) {
                   >
                     <div>
                       <input type="checkbox" name="" id="CLARINS" />
-                      <label htmlFor="CLARINS">CLARINS</label>
+                      <label className="text-sm xl:text-base" htmlFor="CLARINS">CLARINS</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="CLINIQUE" />
-                      <label htmlFor="CLINIQUE">CLINIQUE</label>
+                      <label className="text-sm xl:text-base" htmlFor="CLINIQUE">CLINIQUE</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="COLLISTAR" />
-                      <label htmlFor="COLLISTAR">COLLISTAR</label>
+                      <label className="text-sm xl:text-base" htmlFor="COLLISTAR">COLLISTAR</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="COLLISTAR" />
-                      <label htmlFor="COLLISTAR">COLLISTAR</label>
+                      <label className="text-sm xl:text-base" htmlFor="COLLISTAR">COLLISTAR</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="OLE HENRIKSEN" />
-                      <label htmlFor="OLE HENRIKSEN">OLE HENRIKSEN</label>
+                      <label className="text-sm xl:text-base" htmlFor="OLE HENRIKSEN">OLE HENRIKSEN</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="ORDINARY" />
-                      <label htmlFor="ORDINARY">ORDINARY</label>
+                      <label className="text-sm xl:text-base" htmlFor="ORDINARY">ORDINARY</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="SHISEIDO" />
-                      <label htmlFor="SHISEIDO">SHISEIDO</label>
+                      <label className="text-sm xl:text-base" htmlFor="SHISEIDO">SHISEIDO</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="MURAD" />
-                      <label htmlFor="MURAD">MURAD</label>
+                      <label className="text-sm xl:text-base" htmlFor="MURAD">MURAD</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="BABARIA" />
-                      <label htmlFor="BABARIA">BABARIA</label>
+                      <label className="text-sm xl:text-base" htmlFor="BABARIA">BABARIA</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="CAUDALIE" />
-                      <label htmlFor="CAUDALIE">CAUDALIE</label>
+                      <label className="text-sm xl:text-base" htmlFor="CAUDALIE">CAUDALIE</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="VERONIQUE" />
-                      <label htmlFor="VERONIQUE">VERONIQUE</label>
+                      <label className="text-sm xl:text-base" htmlFor="VERONIQUE">VERONIQUE</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="SKIN ONE" />
-                      <label htmlFor="SKIN ONE">SKIN ONE</label>
+                      <label className="text-sm xl:text-base" htmlFor="SKIN ONE">SKIN ONE</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="DERMATYPIQUE" />
-                      <label htmlFor="DERMATYPIQUE">DERMATYPIQUE</label>
+                      <label className="text-sm xl:text-base" htmlFor="DERMATYPIQUE">DERMATYPIQUE</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="CYSPERSA" />
-                      <label htmlFor="CYSPERSA">CYSPERSA</label>
+                      <label className="text-sm xl:text-base" htmlFor="CYSPERSA">CYSPERSA</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="CB" />
-                      <label htmlFor="CB">CB</label>
+                      <label className="text-sm xl:text-base" htmlFor="CB">CB</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="BRIGHT MAX" />
-                      <label htmlFor="BRIGHT MAX">BRIGHT MAX</label>
+                      <label className="text-sm xl:text-base" htmlFor="BRIGHT MAX">BRIGHT MAX</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="SVR" />
-                      <label htmlFor="SVR">SVR</label>
+                      <label className="text-sm xl:text-base" htmlFor="SVR">SVR</label>
                     </div>
                     <div>
                       <input type="checkbox" name="" id="PRIME" />
-                      <label htmlFor="PRIME">PRIME</label>
+                      <label className="text-sm xl:text-base" htmlFor="PRIME">PRIME</label>
                     </div>
                   </form>
                 </div>
@@ -349,7 +349,7 @@ function Details({ products }: DetailsProps) {
             </div>
 
             {/* filter & sort for mobile */}
-            <div className="flex items-center justify-between gap-x-5 my-5">
+            <div className="flex xs:hidden items-center justify-between gap-x-5 my-5">
               <div
                 onClick={() => setFilterMobile(true)}
                 className="flex w-full justify-between items-center cursor-pointer"
@@ -357,7 +357,7 @@ function Details({ products }: DetailsProps) {
                 <div>
                   <CiFilter />
                 </div>
-                <div>فیلتر محصول</div>
+                <div className="text-sm xs:text-base">فیلتر محصول</div>
               </div>
               <div
                 onClick={() => setSortMobile(true)}
@@ -366,7 +366,7 @@ function Details({ products }: DetailsProps) {
                 <div>
                   <FaSortAmountDownAlt />
                 </div>
-                <div>مشاهده براساس</div>
+                <div className="text-sm xs:text-base">مشاهده براساس</div>
               </div>
             </div>
             {/* product */}
@@ -382,7 +382,7 @@ function Details({ products }: DetailsProps) {
       <div
         className={`${
           filterMobile ? "top-0" : "-top-[1000px]"
-        } absolute bg-white w-full h-[100vh] transition-all overflow-y-auto duration-500 z-[60]`}
+        } block xs:hidden absolute bg-white w-full h-[100vh] transition-all overflow-y-auto duration-500 z-[60]`}
       >
         <div className="flex w-full items-center justify-between p-4">
           <div className="text-2xl">فیلتر محصولات</div>
@@ -588,7 +588,7 @@ function Details({ products }: DetailsProps) {
       <div
         className={`${
           sortMobile ? "top-0" : "-top-[1000px]"
-        } absolute bg-white w-full h-[100vh] transition-all overflow-y-auto duration-500 z-[60]`}
+        } block xs:hidden absolute bg-white w-full h-[100vh] transition-all overflow-y-auto duration-500 z-[60]`}
       >
         <div className="flex w-full items-center justify-between p-4">
           <div className="text-2xl">مشاهده بر اساس</div>
