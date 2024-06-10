@@ -2,11 +2,13 @@ export type ProductsType = {
   id?: number;
   title?: string;
   img?: string;
-  price?:number;
+  price?: number;
+  percent?: number;
+  timer?: number;
   shortDesc?: string;
   longDesc?: string;
   bgColor?: string[];
-  productColors?:string[];
+  productColors?: string[];
 };
 export type ArticlesType = {
   id: number;
