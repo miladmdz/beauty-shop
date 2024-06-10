@@ -1,21 +1,22 @@
 "use client";
 import React, { useState } from "react";
-import { FaCaretDown } from "react-icons/fa";
+import { FaCaretDown, FaAngleDown } from "react-icons/fa";
 import { BsCaretRight } from "react-icons/bs";
 import Link from "next/link";
 
 function Details() {
   const [select, setSelect] = useState<string>("A-C");
+  const [selectMobile, setSelectMobile] = useState<boolean>(false);
 
   return (
     <>
       <div className="container">
-        <h1 className="text-5xl font-bold text-primryCream2 py-5">
+        <h1 className="text-3xl sm:text-5xl font-bold text-primryCream2 py-5">
           لیست برندها
         </h1>
-        {/* select part */}
-        <div className="w-full flex flex-row-reverse justify-center">
-          <ul className="flex flex-row-reverse items-center child:px-4 child:cursor-pointer child:flex child:flex-row-reverse child:gap-x-2 font-bold child:py-2">
+        {/* select part for desktop */}
+        <div className="w-full hidden sm:flex flex-row-reverse justify-center">
+          <ul className="flex flex-row-reverse items-center child:px-1 child:lg:px-4 child:cursor-pointer child:flex child:flex-row-reverse child:gap-x-2 font-bold child:py-2">
             <li
               onClick={() => setSelect("A-C")}
               className={`${
@@ -144,8 +145,136 @@ function Details() {
             </li>
           </ul>
         </div>
+        {/* select part for mobile */}
+        <div className="block sm:hidden relative">
+          <p
+            onClick={() => setSelectMobile((prev) => !prev)}
+            className="flex items-center cursor-pointer font-bold gap-x-2"
+          >
+            انتخاب برند
+            <span className="text-primryCream2">
+              <FaAngleDown />
+            </span>
+          </p>
+          <div
+            className={`${
+              selectMobile ? "fadein_anime" : "hidden"
+            } absolute bg-white right-1 px-5 border max-h-60 overflow-x-auto border-gray-400/70 `}
+          >
+            <ul className="flex flex-col items-center child:px-1 child:lg:px-4 child:cursor-pointer child:flex child:flex-row-reverse child:gap-x-2 font-bold child:py-2">
+              <li
+                onClick={() => {
+                  setSelectMobile(false);
+                  setSelect("A-C");
+                }}
+                className={`${
+                  select === "A-C" &&
+                  " border-b-2 border-primryCream2 text-primryCream2 "
+                } transition-all duration-500`}
+              >
+                <span>A-C</span>
+              </li>
+              <li
+                onClick={() => {
+                  setSelectMobile(false);
+                  setSelect("D-F");
+                }}
+                className={`${
+                  select === "D-F" &&
+                  " border-b-2 border-primryCream2 text-primryCream2 "
+                } transition-all duration-500`}
+              >
+                <span>D-F</span>
+              </li>
+              <li
+                onClick={() => {
+                  setSelectMobile(false);
+                  setSelect("G-I");
+                }}
+                className={`${
+                  select === "G-I" &&
+                  " border-b-2 border-primryCream2 text-primryCream2 "
+                } transition-all duration-500`}
+              >
+                <span>G-I</span>
+              </li>
+              <li
+                onClick={() => {
+                  setSelectMobile(false);
+                  setSelect("J-L");
+                }}
+                className={`${
+                  select === "J-L" &&
+                  " border-b-2 border-primryCream2 text-primryCream2 "
+                } transition-all duration-500`}
+              >
+                <span>J-L</span>
+              </li>
+              <li
+                onClick={() => {
+                  setSelectMobile(false);
+                  setSelect("M-O");
+                }}
+                className={`${
+                  select === "M-O" &&
+                  " border-b-2 border-primryCream2 text-primryCream2 "
+                } transition-all duration-500`}
+              >
+                <span>M-O</span>
+              </li>
+              <li
+                onClick={() => {
+                  setSelectMobile(false);
+                  setSelect("P-R");
+                }}
+                className={`${
+                  select === "P-R" &&
+                  " border-b-2 border-primryCream2 text-primryCream2 "
+                } transition-all duration-500`}
+              >
+                <span>P-R</span>
+              </li>
+              <li
+                onClick={() => {
+                  setSelectMobile(false);
+                  setSelect("S-U");
+                }}
+                className={`${
+                  select === "S-U" &&
+                  " border-b-2 border-primryCream2 text-primryCream2 "
+                } transition-all duration-500`}
+              >
+                <span>S-U</span>
+              </li>
+              <li
+                onClick={() => {
+                  setSelectMobile(false);
+                  setSelect("V-X");
+                }}
+                className={`${
+                  select === "V-X" &&
+                  " border-b-2 border-primryCream2 text-primryCream2 "
+                } transition-all duration-500`}
+              >
+                <span>V-X</span>
+              </li>
+              <li
+                onClick={() => {
+                  setSelectMobile(false);
+                  setSelect("Y-Z");
+                }}
+                className={`${
+                  select === "Y-Z" &&
+                  " border-b-2 border-primryCream2 text-primryCream2 "
+                } transition-all duration-500`}
+              >
+                <span>Y-Z</span>
+              </li>
+            </ul>
+          </div>
+        </div>
         {/* more */}
-        <div className="w-full flex flex-row-reverse child:flex-col py-5">
+        <div className="w-full flex flex-row-reverse child:flex-col py-5 min-h-96">
           {/* A-C */}
 
           <div
@@ -161,7 +290,7 @@ function Details() {
                 <div className="text-4xl font-bold">A</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>ALL.NATURE</Link>
@@ -202,7 +331,7 @@ function Details() {
                 <div className="text-4xl font-bold">B</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>BABARIA</Link>
@@ -277,7 +406,7 @@ function Details() {
                 <div className="text-4xl font-bold">C</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>CALVIN KLEIN</Link>
@@ -348,7 +477,7 @@ function Details() {
                 <div className="text-4xl font-bold">D</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>DAHLIA</Link>
@@ -400,7 +529,7 @@ function Details() {
                 <div className="text-4xl font-bold">E</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>ELIE SAAB</Link>
@@ -458,7 +587,7 @@ function Details() {
                 <div className="text-4xl font-bold">F</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>FARSALI</Link>
@@ -502,7 +631,7 @@ function Details() {
                 <div className="text-4xl font-bold">G</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>GARNIER</Link>
@@ -554,7 +683,7 @@ function Details() {
                 <div className="text-4xl font-bold">H</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>HAIRBURST</Link>
@@ -595,7 +724,7 @@ function Details() {
                 <div className="text-4xl font-bold">I</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>INGLOT</Link>
@@ -640,7 +769,7 @@ function Details() {
                 <div className="text-4xl font-bold">J</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>J.CAT</Link>
@@ -684,7 +813,7 @@ function Details() {
                 <div className="text-4xl font-bold">K</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>KAT VON D</Link>
@@ -714,7 +843,7 @@ function Details() {
                 <div className="text-4xl font-bold">L</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>L'OREAL</Link>
@@ -810,7 +939,7 @@ function Details() {
                 <div className="text-4xl font-bold">M</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>MAC</Link>
@@ -899,7 +1028,7 @@ function Details() {
                 <div className="text-4xl font-bold">N</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>NARCISO RODRIGUEZ</Link>
@@ -946,7 +1075,7 @@ function Details() {
                 <div className="text-4xl font-bold">O</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>OFRA</Link>
@@ -988,7 +1117,7 @@ function Details() {
                 <div className="text-4xl font-bold">P</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>P.LOUISE</Link>
@@ -1040,7 +1169,7 @@ function Details() {
                 <div className="text-4xl font-bold">Q</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>QV</Link>
@@ -1058,7 +1187,7 @@ function Details() {
                 <div className="text-4xl font-bold">R</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>RALPH LAUREN</Link>
@@ -1106,7 +1235,7 @@ function Details() {
                 <div className="text-4xl font-bold">S</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>ALL.NATURE</Link>
@@ -1147,7 +1276,7 @@ function Details() {
                 <div className="text-4xl font-bold">T</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>BABARIA</Link>
@@ -1222,7 +1351,7 @@ function Details() {
                 <div className="text-4xl font-bold">U</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>CALVIN KLEIN</Link>
@@ -1293,7 +1422,7 @@ function Details() {
                 <div className="text-4xl font-bold">V</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>VALENTINO</Link>
@@ -1328,7 +1457,7 @@ function Details() {
                 <div className="text-4xl font-bold">W</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>WELLA</Link>
@@ -1349,7 +1478,7 @@ function Details() {
                 <div className="text-4xl font-bold">X</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>XERJOFF</Link>
@@ -1374,7 +1503,7 @@ function Details() {
                 <div className="text-4xl font-bold">Y</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>YORN</Link>
@@ -1398,7 +1527,7 @@ function Details() {
                 <div className="text-4xl font-bold">Z</div>
               </div>
               {/* links */}
-              <div className="w-full flex flex-row-reverse flex-wrap gap-x-56 mt-3">
+              <div className="w-full flex flex-row-reverse flex-wrap gap-x-20 md:gap-x-56 mt-3">
                 <ul className="child:w-full child:flex child:justify-end child:mb-1 mt-4">
                   <li>
                     <Link href={"/"}>ZIPPO</Link>
