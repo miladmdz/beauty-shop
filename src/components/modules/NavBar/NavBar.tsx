@@ -26,19 +26,22 @@ function NavBar() {
   useEffect(() => {
     const fixNavBarToTop = () => {
       setScroll(window.scrollY);
-      if (scroll >= 105) {
-        setFixTop(true);
-        setToggleMenu(false);
-        setToggleMenuMobile(false);
-      } else {
-        setFixTop(false);
-      }
     };
 
     window.addEventListener("scroll", fixNavBarToTop);
 
     return () => window.removeEventListener("scroll", fixNavBarToTop);
   }, []);
+
+  useEffect(() => {
+    if (scroll >= 105) {
+      setFixTop(true);
+      setToggleMenu(false);
+      setToggleMenuMobile(false);
+    } else {
+      setFixTop(false);
+    }
+  }, [scroll]);
 
   const scrollToTopHandler = () => {
     window.scrollTo({
