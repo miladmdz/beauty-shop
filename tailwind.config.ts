@@ -24,6 +24,7 @@ const config: Config = {
         primryBlack:"#212529",
         primryGray:"#6c757d",
         primryGreen:"#198754",
+        primryGreen2:"#0a9a3f",
         primryYellow:"#ffc107",
         primryRed:"#dc3545",
         primryPink:"#d63384",
