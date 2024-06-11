@@ -143,28 +143,28 @@
   }
   @keyframes fadeToLeft {
     0% {
-      transform: translate(0,0);
+      transform: translate(0, 0);
     }
     100% {
-      transform: translate(-100%,0);
+      transform: translate(-100%, 0);
     }
   }
-  .fade_to_left{
+  .fade_to_left {
     position: absolute;
-    transform: translate(-100%,0%);
+    transform: translate(-100%, 0%);
     animation: fadeToLeft 0.5s ease;
   }
   @keyframes fadeToRight {
     0% {
-      transform: translate(-100%,0);
+      transform: translate(-100%, 0);
     }
     100% {
-      transform: translate(0,0);
+      transform: translate(0, 0);
     }
   }
-  .fade_to_right{
+  .fade_to_right {
     position: absolute;
-    transform: translate(0%,0%);
+    transform: translate(0%, 0%);
     animation: fadeToRight 0.5s ease;
   }
   /* input */
@@ -183,13 +183,13 @@
     appearance: none;
     margin: -6px;
     width: 100%;
-    background-color:#000 ;
+    background-color: #000;
   }
   .special_input::-moz-range-thumb {
     -moz-appearance: none;
     appearance: none;
     margin: -6px;
-    background-color:#000 ;
+    background-color: #000;
   }
   .special_input::-ms-track {
     width: 100%;
@@ -199,5 +199,19 @@
     background: #f96;
     border-color: #f96;
     color: #f96;
+  }
+  @keyframes downAnime {
+    0% {
+      transform: translate(0, -10%);
+    }
+    50% {
+      transform: translate(0, -5%);
+    }
+    100% {
+      transform: translate(0, -10%);
+    }
+  }
+  .down_anime {
+    animation: downAnime infinite 6s;
   }
 }
