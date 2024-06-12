@@ -86,7 +86,7 @@ function SwiperComp({
           ))}
         {typeof Articles === "object" &&
           Articles.map((articles) => (
-            <SwiperSlide key={articles.id}>
+            <SwiperSlide key={articles.id} className="child:w-full child:sm:w-44 child:lg:w-[250px]">
               <ArticleBox {...articles} />
             </SwiperSlide>
           ))}
