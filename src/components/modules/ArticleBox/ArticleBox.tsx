@@ -14,7 +14,7 @@ function ArticleBox({
   link,
 }: ArticlesType) {
   return (
-    <div className="w-full h-[350px] sm:w-44 lg:w-[250px]">
+    <div className="h-[350px]">
       {/* top part image */}
       <div className="flex justify-center">
         <Link href={link}>
