@@ -4,6 +4,7 @@ export type ProductsType = {
   img?: string;
   price?: number;
   percent?: number;
+  discount?:number;
   timer?: number;
   shortDesc?: string;
   longDesc?: string;
