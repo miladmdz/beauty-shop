@@ -1,0 +1,73 @@
+import Link from "next/link";
+import React from "react";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { FaBasketShopping } from "react-icons/fa6";
+import { TfiCommentAlt } from "react-icons/tfi";
+import { FaCommentSlash, FaHeart } from "react-icons/fa";
+import { TbListDetails } from "react-icons/tb";
+import { RxExit } from "react-icons/rx";
+
+function SideBar() {
+  return (
+    <div className="relative bg-red-900 w-80 h-full  text-white">
+      <div className="container sticky h-fit top-[67px] flex flex-col justify-between ">
+        {/* welcome */}
+        <h2 className="text-center text-lg font-bold py-7 border-b border-white">
+          خوش اومدی میلاد عزیز
+        </h2>
+        {/* links */}
+        <div>
+          <ul className="child:my-6 child:cursor-pointer child:flex child:items-center child:gap-x-2">
+            <li>
+              <span className="text-xl">
+                <MdOutlineSpaceDashboard />
+              </span>
+              <Link href={"/"}>پیشخوان</Link>
+            </li>
+            <li>
+              <span className="text-xl">
+                <FaBasketShopping />
+              </span>
+              <Link href={"/"}>سفارش ها</Link>
+            </li>
+            <li>
+              <span className="text-xl">
+                <TfiCommentAlt />
+              </span>
+              <Link href={"/"}> تیکت پشتیبانی</Link>
+            </li>
+            <li>
+              <span className="text-xl">
+                <FaCommentSlash />
+              </span>
+              <Link href={"/"}>کامنت ها</Link>
+            </li>
+            <li>
+              <span className="text-xl">
+                <FaHeart />
+              </span>
+              <Link href={"/"}>علاقه مندی</Link>
+            </li>
+            <li>
+              <span className="text-xl">
+                <TbListDetails />
+              </span>
+              <Link href={"/"}>جزِیات اکانت</Link>
+            </li>
+          </ul>
+        </div>
+        {/* logout */}
+        <div className="border-t border-white py-2 font-bold">
+          <Link className="flex items-center justify-between px-2 py-4" href={"/"}>
+            <p className="text-lg">خروج</p>
+            <span>
+              <RxExit className="text-xl"/>
+            </span>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default SideBar;
