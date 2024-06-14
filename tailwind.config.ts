@@ -39,6 +39,9 @@ const config: Config = {
       },
       gridTemplateColumns:{
         "1/3":"repeat(3,1fr)"
+      },
+      boxShadow:{
+        primryShadow:"0px 4px 8px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
       }
     },
     screens: {
