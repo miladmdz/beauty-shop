@@ -1,6 +1,6 @@
 import React from "react";
-import SideBar from "../templates/P-User/sideBar";
-import TopBar from "../templates/P-User/topBar";
+import SideBar from "../templates/P-User/Layout/sideBar";
+import TopBar from "../templates/P-User/Layout/topBar";
 
 type userPanelLayoutProps = {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ type userPanelLayoutProps = {
 
 function UserPanelLayout({ children }: userPanelLayoutProps) {
   return (
-    <div className="flex items-start w-full h-[100vh]">
+    <div className="flex items-start w-full h-full">
       <SideBar />
       <div className="w-full">
         <TopBar />
