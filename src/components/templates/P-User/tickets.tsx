@@ -16,7 +16,7 @@ function Tickets() {
         </Link>
       </div>
       {/* show tickets */}
-      <div className="flex flex-col my-3 gap-y-2">
+      <div className="flex flex-col h-[340px] my-3 gap-y-2">
         <Link
           className="flex items-center justify-between p-4 rounded bg-primryCream2 text-black font-bold"
           href={"/"}
@@ -68,7 +68,11 @@ function Tickets() {
             <div>پاسخ داده</div>
           </div>
         </Link>
-     
+
+        {/* none value */}
+        {/* <div className="h-full w-full flex items-center justify-center font-bold text-xl text-primryCream">
+          تیکتی از شما موجود نمیباشد
+        </div> */}
       </div>
     </div>
   );
