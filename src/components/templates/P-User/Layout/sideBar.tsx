@@ -23,49 +23,49 @@ function SideBar() {
               <span className="text-xl">
                 <MdOutlineSpaceDashboard />
               </span>
-              <Link href={"/"}>پیشخوان</Link>
+              <Link href={"/p-user"}>پیشخوان</Link>
             </li>
             <li>
               <span className="text-xl">
                 <FaBasketShopping />
               </span>
-              <Link href={"/"}>سفارش ها</Link>
+              <Link href={"/p-user/basket"}>سفارش ها</Link>
             </li>
             <li>
               <span className="text-xl">
                 <TfiCommentAlt />
               </span>
-              <Link href={"/"}> تیکت پشتیبانی</Link>
+              <Link href={"/p-user/tickets"}> تیکت پشتیبانی</Link>
             </li>
             <li>
               <span className="text-xl">
                 <FaCommentSlash />
               </span>
-              <Link href={"/"}>کامنت ها</Link>
+              <Link href={"/p-user/comments"}>کامنت ها</Link>
             </li>
             <li>
               <span className="text-xl">
                 <FaHeart />
               </span>
-              <Link href={"/"}>علاقه مندی</Link>
+              <Link href={"/p-user/favorites"}>علاقه مندی</Link>
             </li>
             <li>
               <span className="text-xl">
                 <FaPercent />
               </span>
-              <Link href={"/"}>کد های تخفیف من</Link>
+              <Link href={"/p-user/my-offer"}>کد های تخفیف من</Link>
             </li>
             <li>
               <span className="text-xl">
                 <FaLocationDot />
               </span>
-              <Link href={"/"}>ادرس های من</Link>
+              <Link href={"/p-user/my-locations"}>ادرس های من</Link>
             </li>
             <li>
               <span className="text-xl">
                 <TbListDetails />
               </span>
-              <Link href={"/"}>جزِیات اکانت</Link>
+              <Link href={"/p-user/my-details-account"}>جزِیات اکانت</Link>
             </li>
           </ul>
         </div>
