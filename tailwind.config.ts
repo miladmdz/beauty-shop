@@ -32,6 +32,7 @@ const config: Config = {
         primryOcean2:"#0d6efd",
         primryCream:"#f96",
         primryCream2:"#f4b19f",
+        primryCream3:"#ffd0c3",
       },
       fontSize: {
         xxs: "0.625rem",
