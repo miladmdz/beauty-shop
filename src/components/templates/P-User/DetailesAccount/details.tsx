@@ -1,5 +1,5 @@
 import React from "react";
-import PageTitle from "../pageTitle";
+import PageTitle from "../../../modules/BreadCrumbs/pageTitle";
 import { IoCloudUploadOutline, IoTrashOutline } from "react-icons/io5";
 
 function Details() {

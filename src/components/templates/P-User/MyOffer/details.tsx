@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import PageTitle from "../pageTitle";
+import PageTitle from "../../../modules/BreadCrumbs/pageTitle";
 
 function Details() {
   return (

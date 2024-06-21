@@ -1,11 +1,11 @@
 import React from "react";
-import PageTitle from "../pageTitle";
+import PageTitle from "../../../modules/BreadCrumbs/pageTitle";
 import Link from "next/link";
 
 function Details() {
   return (
     <div>
-      <PageTitle title="تیکت ها" link="/" textlink="ارسال تیکت جدید" />
+      <PageTitle title="تیکت ها" link="tickets/send-tickets" textlink="ارسال تیکت جدید" />
       {/* filter */}
       <div className="w-full flex items-center justify-between py-5">
         <div className="flex items-center gap-x-4">
