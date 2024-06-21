@@ -1,18 +1,21 @@
-import AdminPanelLayout from '@/components/layouts/adminPanelLayout'
-import Footer from '@/components/modules/Footer/Footer'
-import NavBar from '@/components/modules/NavBar/NavBar'
-import React from 'react'
+import AdminPanelLayout from "@/components/layouts/adminPanelLayout";
+import Footer from "@/components/modules/Footer/Footer";
+import NavBar from "@/components/modules/NavBar/NavBar";
+import Details from "@/components/templates/P-Admin/Tickets/details";
+import React from "react";
 
 function page() {
   return (
     <>
-    <NavBar />
+      <NavBar />
       <AdminPanelLayout>
-        <div></div>
+        <div className="container">
+          <Details />
+        </div>
       </AdminPanelLayout>
       <Footer />
     </>
-  )
+  );
 }
 
-export default page
+export default page;

@@ -46,7 +46,7 @@ function SideBar() {
               <span className="text-xl">
                 <FaPercent />
               </span>
-              <Link href={"/p-admin/my-tickets"}>تیکت ها</Link>
+              <Link href={"/p-admin/tickets"}>تیکت ها</Link>
             </li>
             <li>
               <span className="text-xl">

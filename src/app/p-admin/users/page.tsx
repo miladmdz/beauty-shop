@@ -1,6 +1,7 @@
 import AdminPanelLayout from '@/components/layouts/adminPanelLayout'
 import Footer from '@/components/modules/Footer/Footer'
 import NavBar from '@/components/modules/NavBar/NavBar'
+import Details from '@/components/templates/P-Admin/Users/details'
 import React from 'react'
 
 function page() {
@@ -8,7 +9,9 @@ function page() {
     <>
     <NavBar />
       <AdminPanelLayout>
-        <div></div>
+        <div className='container'>
+          <Details/>
+        </div>
       </AdminPanelLayout>
       <Footer />
     </>
