@@ -25,7 +25,7 @@ function CalculateComp() {
             >
               <IoIosArrowUp
                 className={`${
-                  toggleMenu ? "rotate-180" : ""
+                  toggleMenu ? "rotateY_anime" : ""
                 } text-lg transition-all duration-500`}
               />
             </div>
