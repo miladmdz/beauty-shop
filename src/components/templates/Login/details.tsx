@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 import { FormHelperText, Input, InputLabel } from "@mui/material";
 import { IoEnterOutline } from "react-icons/io5";
+import Link from "next/link";
 
 function Details() {
   return (
@@ -50,7 +51,7 @@ function Details() {
         <div className="mb-4">
           <p>
             اگر قبلا ثبت نام نکرده اید،{" "}
-            <span className="text-primryCream2 font-bold">ثبت نام</span> کنید
+            <Link href="register" className="text-primryCream2 font-bold">ثبت نام</Link> کنید
           </p>
         </div>
       </div>

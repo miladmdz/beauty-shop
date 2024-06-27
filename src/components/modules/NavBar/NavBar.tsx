@@ -101,7 +101,9 @@ function NavBar() {
             {/* heart basket .... */}
             <div className="flex justify-between w-36 child:text-2xl child-hover:cursor-pointer child:mx">
               <TfiEmail />
-              <IoPersonCircleOutline />
+              <Link href="login">
+                <IoPersonCircleOutline />
+              </Link>
               <div className="relative">
                 <LuShoppingCart />
                 <span className="absolute flex items-center justify-center -top-1 left-3 bg-red-500 rounded-full text-white text-xs w-4 h-4">
