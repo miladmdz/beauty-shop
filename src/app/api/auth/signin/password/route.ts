@@ -25,7 +25,6 @@ export async function POST(req: NextRequest) {
     }
 
     const isCorrectPassword =await verifyPassword(password, findUser.password);
-    console.log(isCorrectPassword,"acv,sa;mv;emv;emvweگثبکضصئثکبئکضثئبکئضثکبئضکثئبکضئثکبئضکثبئک");
 
     if (!isCorrectPassword) {
       return Response.json(
