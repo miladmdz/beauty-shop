@@ -1,18 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const widthSlice = createSlice({
-  name: 'width',
+export const emailSlice = createSlice({
+  name: 'email',
   initialState: {
-    value: window.innerWidth
+    value: ""
   },
   reducers: {
-    updateWidth:(state,action)=>{
+    updateEmail:(state,action)=>{
         state.value=action.payload
     }
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { updateWidth } = widthSlice.actions
+export const { updateEmail } = emailSlice.actions
 
-export default widthSlice.reducer
+export default emailSlice.reducer

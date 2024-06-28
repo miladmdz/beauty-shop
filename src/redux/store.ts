@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import widthReducer from './slice'
+import emailReducer from './slice'
 
 export const store= configureStore({
   reducer: {
-    width:widthReducer
+    email:emailReducer
   }
 })
 
