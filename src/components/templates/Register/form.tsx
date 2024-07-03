@@ -48,7 +48,7 @@ function Form() {
       Swal.fire({
         icon: "error",
         title: "ورودی اشتباه است",
-        text: "باید بیشتر از 3 کاراکتر و کمتر از 10 کاراکتر باشد",
+        text: "باید بیشتر از 3 کاراکتر و کمتر از 20 کاراکتر باشد",
         showConfirmButton: true,
         confirmButtonText: "متوجه شدم",
       });
