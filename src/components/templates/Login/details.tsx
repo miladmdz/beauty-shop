@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { updateEmail } from "@/redux/slice";
+import Swal from "sweetalert2";
 
 function Details() {
   const router = useRouter();
@@ -15,9 +16,6 @@ function Details() {
   const dispatch = useDispatch();
 
   const [emailPhone, setEmailPhone] = useState<string>("");
-  const [error, setError] = useState<string>(
-    "شماره موبایل یا ایمیل خودرا وارد کنید"
-  );
 
   const formHandler = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -27,11 +25,16 @@ function Details() {
     const isEmail = validEmail(emailPhone);
 
     if (isPhone || isEmail) {
-      setError("شماره موبایل یا ایمیل خودرا وارد کنید");
     } else {
-      setError(
-        "شماره یا ایمیل مورد نظر اشتباه است (مثال:09121234567 email@example.com)"
-      );
+      Swal.fire({
+        icon: "error",
+        title:
+          "شماره یا ایمیل مورد نظر اشتباه است (مثال:09121234567 email@example.com)",
+        showConfirmButton: true,
+        confirmButtonText: "تلاش مجدد",
+      }).then((result) => {
+        setEmailPhone("");
+      });
     }
     if (isEmail) {
       const res = await fetch("/api/auth/signin/email", {
@@ -39,6 +42,7 @@ function Details() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: emailPhone }),
       });
+      console.log(res);
       if (res.status === 201) {
         dispatch(updateEmail(emailPhone));
         router.push("login/send-password");
@@ -79,14 +83,8 @@ function Details() {
               />
             </div>
           </div>
-          <div
-            className={`${
-              error === "شماره موبایل یا ایمیل خودرا وارد کنید"
-                ? "text-green-600 text-xxs w-full mt-1"
-                : "text-red-600 text-xxs w-full mt-1"
-            }`}
-          >
-            {error}
+          <div className={`text-green-600 text-xxs w-full mt-1`}>
+            شماره موبایل یا ایمیل خودرا وارد کنید
           </div>
         </div>
         {/* button */}
