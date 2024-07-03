@@ -4,14 +4,9 @@ import NavBar from "@/components/modules/NavBar/NavBar";
 import DataBox from "@/components/templates/P-User/Boxs/dataBox";
 import Orders from "@/components/templates/P-User/orders";
 import Tickets from "@/components/templates/P-User/tickets";
-import connectToDB from "@/configs/db";
-import userModel from "@/model/User";
-import { authUser } from "@/utils/serverHelper";
 import React from "react";
 
 const page = async () => {
-
-
   return (
     <div>
       <NavBar />
