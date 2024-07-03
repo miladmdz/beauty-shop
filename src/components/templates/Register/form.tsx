@@ -2,7 +2,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { IoPersonAddOutline } from "react-icons/io5";
-import swal from "sweetalert";
 import { useRouter } from "next/navigation";
 import {
   validEmail,
@@ -10,6 +9,7 @@ import {
   validPassword,
   validPhoneNumbre,
 } from "@/utils/auth";
+import Swal from "sweetalert2";
 
 function Form() {
   // values input
@@ -41,41 +41,62 @@ function Form() {
     const valiLnameHandler = validFirstAndLastname(lname);
     const validEmailHandler = validEmail(email);
     const validPassHandler = validPassword(pass1);
+    const validPhoneHandler = validPhoneNumbre(phone);
 
     // name validation
-    if (valiFnameHandler && valiLnameHandler) {
-      setNameValid("");
-    } else {
-      setNameValid("باید بیشتر از 3 کاراکتر و کمتر از 10 کاراکتر باشد");
+    if (!valiFnameHandler || !valiLnameHandler) {
+      Swal.fire({
+        icon: "error",
+        title: "ورودی اشتباه است",
+        text: "باید بیشتر از 3 کاراکتر و کمتر از 10 کاراکتر باشد",
+        showConfirmButton: true,
+        confirmButtonText: "متوجه شدم",
+      });
     }
 
     // phone vlaidation
-    if (validPhoneNumbre(phone)) {
-      setPhoneValid("");
-    } else {
-      setPhoneValid("شماره مورد نظر اشتباه است (مثال:09121234567) باشد");
+    if (!validPhoneHandler) {
+      Swal.fire({
+        icon: "error",
+        title: "ورودی اشتباه است",
+        text: "شماره مورد نظر اشتباه است (مثال:09121234567) باشد",
+        showConfirmButton: true,
+        confirmButtonText: "متوجه شدم",
+      });
     }
 
     // email validation
 
-    if (validEmailHandler) {
-      setEmailValid("");
-    } else {
-      setEmailValid("ایمیل اشتباه است(مثال : email@example.com)");
+    if (!validEmailHandler) {
+      Swal.fire({
+        icon: "error",
+        title: "ورودی اشتباه است",
+        text: "ایمیل اشتباه است(مثال : email@example.com)",
+        showConfirmButton: true,
+        confirmButtonText: "متوجه شدم",
+      });
     }
 
     // password validation
 
     if (pass1 === pass2) {
       if (!validPassHandler) {
-        setPassValid(
-          "پسوورد باید شامل عدد حروف بزرگ و کاراکتر(#?!@$ %^&*-)باشد"
-        );
-      } else {
-        setPassValid("");
+        Swal.fire({
+          icon: "error",
+          title: "ورودی اشتباه است",
+          text: "پسوورد باید شامل عدد حروف بزرگ و کاراکتر(#?!@$ %^&*-)باشد",
+          showConfirmButton: true,
+          confirmButtonText: "متوجه شدم",
+        });
       }
     } else {
-      setPassValid("رمز عبور مطابقت ندارد");
+      Swal.fire({
+        icon: "error",
+        title: "ورودی اشتباه است",
+        text: "رمز عبور مطابقت ندارد",
+        showConfirmButton: true,
+        confirmButtonText: "متوجه شدم",
+      });
     }
 
     let newUser = {
@@ -89,12 +110,21 @@ function Form() {
       email,
       password: pass1,
     };
+    console.log(newUser);
+    console.log(valiFnameHandler);
+    console.log(valiLnameHandler);
+    console.log(validEmailHandler);
+    console.log(validPassHandler);
+    console.log(validPhoneHandler);
+    //server status validations
     if (
       valiFnameHandler &&
       valiLnameHandler &&
       validEmailHandler &&
-      validPassHandler
+      validPassHandler &&
+      validPhoneHandler
     ) {
+      console.log("hello");
       const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {
@@ -102,24 +132,41 @@ function Form() {
         },
         body: JSON.stringify(newUser),
       });
-      if (res.status === 200) {
-        setFname("");
-        setLname("");
-        setGender("");
-        setYear("");
-        setMonth("");
-        setDay("");
-        setPhone("");
-        setEmail("");
-        setPass1("");
-        setPass2("");
-        setShowPass(false);
-        swal({
+      if (res.status === 201) {
+        Swal.fire({
           title: "ثبت نام شما با موفقیت انجام شد",
           icon: "success",
-          buttons: ["پنل ادمین", "صفحه اصلی"],
+          showConfirmButton: true,
+          confirmButtonText: "متوجه شدم",
         }).then((result) => {
-          router.push("/");
+          router.push("/p-user");
+        });
+      } else if (res.status === 422) {
+        Swal.fire({
+          title: "کاربری با شماره یا ایمیل یا با این اسم وجود دارد",
+          icon: "error",
+          showConfirmButton: true,
+          confirmButtonText: "تلاش مجدد",
+        }).then((result) => {
+          router.refresh();
+        });
+      } else if (res.status === 402) {
+        Swal.fire({
+          title: "اطلاعات وارد شده صحیح نمیباشد",
+          icon: "error",
+          showConfirmButton: true,
+          confirmButtonText: "تلاش مجدد",
+        }).then((result) => {
+          router.refresh();
+        });
+      }else{
+        Swal.fire({
+          title: "مشکل از سمت سرور",
+          icon: "error",
+          showConfirmButton: true,
+          confirmButtonText: "تلاش مجدد",
+        }).then((result) => {
+          router.refresh();
         });
       }
     }
