@@ -1,7 +1,12 @@
+import { UserType } from "@/components/Type/User.type";
+import connectToDB from "@/configs/db";
+import { authUser } from "@/utils/serverHelper";
 import React from "react";
 import { IoMdNotifications } from "react-icons/io";
 
-function TopBar() {
+const TopBar = async () => {
+  connectToDB();
+  const user = await authUser();
   return (
     <div className="w-full h-fit bg-black flex items-center justify-between px-8 py-3 border-b-4 border-primryCream2">
       {/* img */}
@@ -15,9 +20,11 @@ function TopBar() {
         </div>
         <div className="flex flex-col items-start text-white text-sm">
           {/* name */}
-          <div>میلاد محمودزاده</div>
+          <div>
+            {user.firstName} - {user.lastName}
+          </div>
           {/* role */}
-          <div className="text-gray-400 font-bold">ادمین</div>
+          <div className="text-gray-400 font-bold">{user.role}</div>
         </div>
       </div>
       {/* notif */}
@@ -29,6 +36,6 @@ function TopBar() {
       </div>
     </div>
   );
-}
+};
 
 export default TopBar;
