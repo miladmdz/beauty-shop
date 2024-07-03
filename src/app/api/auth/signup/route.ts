@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import connectToDB from "@/configs/db";
 import userModel from "@/model/User";
+
 import {
   generateToken,
   hashPassword,
@@ -9,6 +10,7 @@ import {
   validPassword,
   validPhoneNumbre,
 } from "@/utils/auth";
+import { role } from "@/utils/constant";
 
 export async function POST(req: NextRequest) {
   try {
@@ -69,8 +71,9 @@ export async function POST(req: NextRequest) {
       phone,
       email,
       password: hashedPass,
-      role: users.length > 0 ? "USER" : "ADMIN",
+      role: users.length > 0 ? role.USER : role.ADMIN,
     });
+
     return Response.json(
       { message: "user created successfully :))" },
       {
@@ -84,4 +87,3 @@ export async function POST(req: NextRequest) {
     return Response.json({ message: err }, { status: 500 });
   }
 }
-
