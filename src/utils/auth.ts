@@ -1,8 +1,7 @@
 import { hash, compare } from "bcryptjs";
 import { sign, verify } from "jsonwebtoken";
 
-let private_key =
-  "ascsac4as56c465as4cf564def78w9e7f987ew9f87986qd65c413c51a32s1c32as1c";
+let private_key: string = process.env.AccessTokenSecretKey!;
 
 const hashPassword = async (password: string) => {
   const hashedPassword = await hash(password, 12);
@@ -33,7 +32,7 @@ const verifyToken = (token: string) => {
 };
 
 const validFirstAndLastname = (name: string) => {
-  if (name.length > 2 && name.length < 10) {
+  if (name.length > 2 && name.length < 20) {
     return true;
   } else {
     return false;
