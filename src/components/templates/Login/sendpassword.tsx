@@ -6,20 +6,18 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { IoEnterOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
-import swal from "sweetalert";
+import swal from "sweetalert2";
 
 function Sendpassword() {
   const router = useRouter();
   const email = useSelector((state: RootState) => state.email.value);
   const [password, setPassword] = useState<string>("");
-  const [error, setError] = useState<string>(" پسوورد خودرا وارد کنید");
 
   const formHandler = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     const isValidPassword = validPassword(password);
     if (isValidPassword) {
-      setError(" پسوورد خودرا وارد کنید");
       const res = await fetch("/api/auth/signin/password", {
         method: "POST",
         headers: {
@@ -28,28 +26,54 @@ function Sendpassword() {
         body: JSON.stringify({ email, password }),
       });
       if (res.status === 201) {
-        swal({
-          icon: "success",
-          title: "ورورد شما با موفقیت انجام شد",
-          buttons: ["خانه", "پنل کاربری"],
-        }).then((result) => {
-          if (result) {
+        swal
+          .fire({
+            icon: "success",
+            title: "ورورد شما با موفقیت انجام شد",
+            showConfirmButton: true,
+            confirmButtonText: "متوجه شدم",
+          })
+          .then((result) => {
             router.push("/p-user");
-          } else {
-            router.push("/");
-          }
-        });
+          });
+      } else if (res.status === 401) {
+        swal
+          .fire({
+            icon: "error",
+            title: "پسوورد اشتباه است",
+            showConfirmButton: true,
+            confirmButtonText: "تلاش مجدد",
+          })
+          .then((result) => {
+            setPassword("");
+          });
       } else {
-        swal({
-          icon: "warning",
-          title: "پسوورد اشتباه است",
-          button: "تلاش مجدد",
-        });
+        swal
+          .fire({
+            icon: "error",
+            title: "اشکال از سمت سرور",
+            showConfirmButton: true,
+            confirmButtonText: "تلاش مجدد",
+          })
+          .then((result) => {
+            router.push("/login");
+          });
       }
     } else {
-      setError("پسوورد باید دارای  حروف بزرگ لاتین و عدد و(#?!@$ %^&*-)باشد");
+      swal
+        .fire({
+          icon: "error",
+          title: "رمز اشتباه است",
+          text: "پسوورد باید دارای  حروف بزرگ لاتین و عدد و(#?!@$ %^&*-)باشد",
+          showConfirmButton: true,
+          confirmButtonText: "تلاش مجدد",
+        })
+        .then((result) => {
+          setPassword("");
+        });
     }
   };
+
   return (
     <div className="xs:container flex mt-10 xs:mt-20 justify-center h-[70vh]">
       <div className="w-[500px] h-[300px] flex flex-col justify-between items-center xs:shadow-primryShadow">
@@ -83,14 +107,8 @@ function Sendpassword() {
               />
             </div>
           </div>
-          <div
-            className={`${
-              error === " پسوورد خودرا وارد کنید"
-                ? "text-green-600 text-xxs w-full mt-1"
-                : "text-red-600 text-xxs w-full mt-1"
-            }`}
-          >
-            {error}
+          <div className={`text-green-600 text-xxs w-full mt-1"`}>
+            پسوورد خودرا وارد کنید
           </div>
         </div>
         {/* button */}
