@@ -5,15 +5,17 @@ import { FaBasketShopping, FaLocationDot, FaPercent } from "react-icons/fa6";
 import { TfiCommentAlt } from "react-icons/tfi";
 import { FaCommentSlash, FaHeart } from "react-icons/fa";
 import { TbListDetails } from "react-icons/tb";
-import Logoutbutton from "../LogoutBtn/logoutbutton";
+import Logoutbutton from "@/components/modules/LogoutBtn/logoutbutton";
+import { authUser } from "@/utils/serverHelper";
 
-const SideBar = () => {
+const SideBar = async () => {
+  const user = await authUser();
   return (
     <div className="bg-primryCream2 w-80 sticky top-[67px] h-full text-white">
       <div className="container  flex flex-col justify-between">
         {/* welcome */}
         <h2 className="text-center text-lg font-bold py-7 border-b border-white">
-          خوش اومدی میلاد عزیز
+          خوش اومدی {user.firstName} عزیز
         </h2>
         {/* links */}
         <div>
