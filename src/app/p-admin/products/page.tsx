@@ -3,21 +3,25 @@ import Footer from "@/components/modules/Footer/Footer";
 import NavBar from "@/components/modules/NavBar/NavBar";
 import AddProduct from "@/components/templates/P-Admin/Products/addProduct";
 import ProductsList from "@/components/templates/P-Admin/Products/productsList";
+import connectToDB from "@/configs/db";
+import productsModel from "@/model/Product";
 import React from "react";
 
-function page() {
+const page = async () => {
+  connectToDB();
+  const products = await productsModel.find();
   return (
     <>
       <NavBar />
       <AdminPanelLayout>
         <div className="container">
           <AddProduct />
-          <ProductsList />
+          <ProductsList products={products} />
         </div>
       </AdminPanelLayout>
       <Footer />
     </>
   );
-}
+};
 
 export default page;
