@@ -4,12 +4,37 @@ export type ProductsType = {
   img?: string;
   price?: number;
   percent?: number;
-  discount?:number;
+  discount?: number;
   timer?: number;
   shortDesc?: string;
   longDesc?: string;
   bgColor?: string[];
   productColors?: string[];
+};
+export type ProductsResultType = {
+  _id: string;
+  nameFa: string;
+  nameEn: string;
+  Brand: string;
+  img: string;
+  price: number;
+  percent?: number;
+  discount?: number;
+  timer?: number;
+  shortDesc?: string;
+  longDesc?: string;
+  bgColor?: string[];
+  productColors?: string[];
+  Compounds: string[];
+  howToUse: string;
+  weight: string;
+  specific: string[];
+  smell: string;
+  tags: string[];
+  color: string[];
+  rate: number;
+  sales: number;
+  comments?: string[];
 };
 export type ArticlesType = {
   id: number;
