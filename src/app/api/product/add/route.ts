@@ -21,10 +21,10 @@ export async function POST(req: NextRequest) {
     const specific = (formData.get("specific") as string).split(",");
     const smell = formData.get("smell");
     const tags = (formData.get("tags") as string).split(",");
-    const color =(formData.get("color") as string).split(",");
+    const color = (formData.get("color") as string).split(",");
     const img = formData.get("img");
 
-    let buffer = Buffer.from(await (img as File).arrayBuffer() );
+    let buffer = Buffer.from(await (img as File).arrayBuffer());
     let fileName = Date.now() + (img as File).name;
     let imgPath = path.join(process.cwd(), "public/uploads/", fileName);
 
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       longDesc,
       Compounds,
       howToUse,
-      weight: Number(weight),
+      weight,
       specific,
       smell,
       tags,
