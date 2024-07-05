@@ -18,6 +18,18 @@ const schema = new mongoose.Schema(
       required: true,
       type: Number,
     },
+    percent: {
+      type: Number,
+      required: false,
+    },
+    discount: {
+      type: Number,
+      required: false,
+    },
+    timer: {
+      type: Number,
+      required: false,
+    },
     shortDesc: {
       required: true,
       type: String,
@@ -36,7 +48,7 @@ const schema = new mongoose.Schema(
     },
     weight: {
       required: true,
-      type: Number,
+      type: String,
     },
     specific: {
       required: true,
@@ -61,6 +73,11 @@ const schema = new mongoose.Schema(
     rate: {
       required: true,
       type: Number,
+    },
+    sales: {
+      type: Number,
+      required: true,
+      default: 0,
     },
     comments: {
       required: false,
