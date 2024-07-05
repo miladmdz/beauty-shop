@@ -1,12 +1,21 @@
+"use client";
 import React from "react";
 import { CiHeart } from "react-icons/ci";
 import { BsPatchCheck } from "react-icons/bs";
 import { TfiCommentAlt } from "react-icons/tfi";
-import { IoStar } from "react-icons/io5";
+import { IoStar, IoStarOutline } from "react-icons/io5";
 import Link from "next/link";
 import ImageZoom from "./imageZoom";
+import {
+  ProductsResultType,
+  ProductsType,
+} from "@/components/Type/Products.type";
 
-function Details() {
+type DetailsProps = {
+  product: ProductsResultType;
+};
+
+function Details({ product }: DetailsProps) {
   return (
     <>
       <div className="container grid grid-cols-1 h-fit grid-rows-1 md:grid-cols-2 md:grid-rows-2 xl:grid-cols-3 xl:grid-rows-1 gap-x-9">
@@ -18,29 +27,34 @@ function Details() {
           </div>
           <div className="flex items-center gap-x-5 pr-2 border-r-[1px] border-gray-500/70">
             <TfiCommentAlt />
-            <p>1</p>
+            <p>{product.comments?.length}</p>
           </div>
           <div className="flex items-center gap-x-5 pr-2 border-r-[1px] border-gray-500/70">
-            <p>5.0</p>
+            <p>{product.rate.toFixed(1)}</p>
             <div className="flex child:text-yellow-500">
-              <IoStar />
-              <IoStar />
-              <IoStar />
-              <IoStar />
-              <IoStar />
+              {Array(product.rate)
+                .fill(0)
+                .map((item, index) => (
+                  <IoStar key={index} />
+                ))}
+              {Array(5 - product.rate)
+                .fill(0)
+                .map((item, index) => (
+                  <IoStarOutline key={index} />
+                ))}
             </div>
           </div>
         </div>
         {/* image */}
-        <ImageZoom />
+        <ImageZoom img={product.img}/>
         {/* details main */}
         <div className="flex w-full h-96 flex-col justify-between">
           {/* title */}
           <h1 className="text-primryCream text-2xl font-bold">
-            رژ لب مات انوی پیپا
+            {product.nameFa}
           </h1>
           {/* title en */}
-          <p className="text-primryGray">Pippa of London Envy Lipstick</p>
+          <p className="text-primryGray">{product.nameEn}</p>
           {/* rate comment like */}
           <div className="flex items-center justify-start gap-x-5">
             <div className="flex items-center gap-x-5">
@@ -49,55 +63,52 @@ function Details() {
             </div>
             <div className="flex items-center gap-x-5 pr-2 border-r-[1px] border-gray-500/70">
               <TfiCommentAlt />
-              <p>1</p>
+              <p>{product.comments?.length}</p>
             </div>
             <div className="flex items-center gap-x-5 pr-2 border-r-[1px] border-gray-500/70">
-              <p>5.0</p>
+              <p>{product.rate.toFixed(1)}</p>
               <div className="flex child:text-yellow-500">
-                <IoStar />
-                <IoStar />
-                <IoStar />
-                <IoStar />
-                <IoStar />
+                {Array(product.rate)
+                  .fill(0)
+                  .map((item, index) => (
+                    <IoStar key={index} />
+                  ))}
+                {Array(5 - product.rate)
+                  .fill(0)
+                  .map((item, index) => (
+                    <IoStarOutline key={index} />
+                  ))}
               </div>
             </div>
           </div>
           {/* colors */}
-          <div className="flex items-start gap-1 flex-wrap w-full mt-5 fit">
-            <div className="w-10 h-10 bg-red-600"></div>
-            <div className="w-10 h-10 bg-red-600"></div>
-            <div className="w-10 h-10 bg-red-600"></div>
-            <div className="w-10 h-10 bg-red-600"></div>
-            <div className="w-10 h-10 bg-red-600"></div>
-            <div className="w-10 h-10 bg-red-600"></div>
-            <div className="w-10 h-10 bg-red-600"></div>
-            <div className="w-10 h-10 bg-red-600"></div>
-            <div className="w-10 h-10 bg-red-600"></div>
-            <div className="w-10 h-10 bg-red-600"></div>
-            <div className="w-10 h-10 bg-red-600"></div>
-            <div className="w-10 h-10 bg-red-600"></div>
-            <div className="w-10 h-10 bg-red-600"></div>
-          </div>
+          {product.color.length > 0 && (
+            <div className="flex items-start gap-1 flex-wrap w-full mt-5 fit">
+              {product.color.map((item, index) => (
+                <div
+                  key={index}
+                  className="w-10 h-10"
+                  style={{ backgroundColor: `${item}` }}
+                ></div>
+              ))}
+            </div>
+          )}
           {/* property */}
-          <div className="flex flex-col justify-between h-44 mt-5">
+          <div className="flex flex-col gap-y-5 h-44 mt-5">
             <h2 className="text-primryCream2 font-bold text-2xl">
               ویژگی های محصول
             </h2>
             <ul className="child:gap-y-4">
-              <li className="flex items-center gap-x-2">
-                <span className="inline-block w-3 h-3 bg-primryCream2 rounded-full"></span>
-                <p>دارای رنگدانه های غنی</p>
-              </li>
-              <li className="flex items-center gap-x-2">
-                <span className="inline-block w-3 h-3 bg-primryCream2 rounded-full"></span>
-                <p>دارای بافت نرم</p>
-              </li>
-              <li className="flex items-center gap-x-2">
-                <span className="inline-block w-3 h-3 bg-primryCream2 rounded-full"></span>
-                <p>حاوی ویتامین E</p>
-              </li>
+              {product.specific.map((item, index) => (
+                <li key={index} className="flex items-center gap-x-2">
+                  <span className="inline-block w-3 h-3 bg-primryCream2 rounded-full"></span>
+                  <p>{item}</p>
+                </li>
+              ))}
             </ul>
-            <div className="text-green-700 font-bold">+نمایش بیشتر</div>
+            {product.specific.length > 3 && (
+              <div className="text-green-700 font-bold">+نمایش بیشتر</div>
+            )}
           </div>
         </div>
         {/* price for desktop */}
@@ -194,7 +205,9 @@ function Details() {
         <div className="container w-full flex items-center justify-between gap-x-2 sm:gap-x-28">
           {/* button */}
           <div className="flex items-center justify-around bg-primryCream2 text-white w-full py-2 rounded-3xl">
-            <div className="w-full text-center text-xs sm:text-base">افزودن به سبد خرید</div>
+            <div className="w-full text-center text-xs sm:text-base">
+              افزودن به سبد خرید
+            </div>
             <div className="flex items-center gap-x-1 lg:w-[10%] xl:w-[20%] border-r border-white pr-3">
               <select
                 className="bg-inherit outline-none child:text-black"
