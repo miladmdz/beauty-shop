@@ -16,7 +16,7 @@ function Road({ route }: RoadProps) {
         <Link href={"/"}>خانه</Link>
       </div>
       <span className="text-black px-2">/</span>
-      <Link href={""} className="text-primryBlack">{route.split("/")[0]}</Link>
+      <Link href={""} className="text-primryBlack">{route}</Link>
     </div>
     </>
   );
