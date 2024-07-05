@@ -1,8 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import PageTitle from "../../../modules/BreadCrumbs/pageTitle";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 function AddProduct() {
+  const router = useRouter();
+
   const [nameFa, setNamefa] = useState<string>("");
   const [nameEn, setNameEn] = useState<string>("");
   const [brand, setBrand] = useState<string>("");
@@ -44,7 +48,37 @@ function AddProduct() {
       method: "POST",
       body: formData,
     });
-    console.log(await res.json());
+    if (res.status === 201) {
+      setNamefa("");
+      setNameEn("");
+      setBrand("");
+      setPrice("");
+      setLongDesc("");
+      setShoertDesc("");
+      setCompoundes("");
+      setHowToUse("");
+      setWeight("");
+      setSpecific("");
+      setSmell("");
+      setTags("");
+      setColors("");
+      setImg("");
+      Swal.fire({
+        icon: "success",
+        title: "محصول با موفقیت اضافه شد",
+        showConfirmButton: true,
+        confirmButtonText: "متوجه شدم",
+      }).then((result) => {
+        router.refresh();
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "مشکل از سمت سرور ",
+        showConfirmButton: true,
+        confirmButtonText: "تلاش مجدد",
+      });
+    }
   };
 
   return (
@@ -126,12 +160,11 @@ function AddProduct() {
           <label className="font-bold pt-4" htmlFor="long-desc">
             توضیحات بلند
           </label>
-          <input
+          <textarea
             value={longDesc}
             onChange={(e) => setLongDesc(e.target.value)}
             id="long-desc"
             className="w-full outline-none border-2 border-primryCream2 rounded-md px-1 py-1"
-            type="text"
             placeholder="توضیحات بلند محصول"
           />
         </div>
