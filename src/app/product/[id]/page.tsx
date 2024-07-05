@@ -4,10 +4,15 @@ import Details from "@/components/templates/Product/details";
 import Road from "@/components/templates/Product/road";
 import SuggestProducts from "@/components/templates/Product/suggestProducts";
 import Tabs from "@/components/templates/Product/tabs";
-
+import connectToDB from "@/configs/db";
+import productsModel from "@/model/Product";
 import React from "react";
 
-function page() {
+type PageProps = {
+  params: {};
+};
+
+const page = async ({ params }: PageProps) => {
   let productsNews = [
     {
       id: 1,
@@ -80,11 +85,19 @@ function page() {
       img: "../images/NewsProducts/Capture10.jpg",
     },
   ];
+
+  connectToDB();
+  const ID = (params as { id: string }).id;
+  const product = await productsModel.findOne(
+    { _id: ID },
+    "-createdAt -updatedAt "
+  );
+  console.log(product);
   return (
     <>
       <NavBar />
-      <Road route={"رژ لب / رژ لب مات انوی پیپا"} />
-      <Details />
+      <Road route={`${product.nameFa}`} />
+      <Details product={product} />
       <Tabs />
       <div className="container">
         <SuggestProducts products={productsNews} title="محصولات مرتبط" />
@@ -92,6 +105,6 @@ function page() {
       <Footer />
     </>
   );
-}
+};
 
 export default page;
