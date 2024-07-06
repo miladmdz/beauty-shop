@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+require("./Comment");
+require("./User");
 
 const schema = new mongoose.Schema(
   {
@@ -78,6 +80,10 @@ const schema = new mongoose.Schema(
       type: Number,
       required: true,
       default: 0,
+    },
+    likes: {
+      required: true,
+      type: [{ type: mongoose.Types.ObjectId, ref: "User" }],
     },
     comments: {
       required: false,
