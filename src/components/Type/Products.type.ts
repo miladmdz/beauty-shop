@@ -15,7 +15,7 @@ export type ProductsResultType = {
   _id: string;
   nameFa: string;
   nameEn: string;
-  Brand: string;
+  brand: string;
   img: string;
   price: number;
   percent?: number;
@@ -35,6 +35,7 @@ export type ProductsResultType = {
   rate: number;
   sales: number;
   comments?: string[];
+  likes?:string[]
 };
 export type ArticlesType = {
   id: number;
