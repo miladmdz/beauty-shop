@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { BsPatchCheck } from "react-icons/bs";
 import { TfiCommentAlt } from "react-icons/tfi";
@@ -8,14 +8,23 @@ import Link from "next/link";
 import ImageZoom from "./imageZoom";
 import {
   ProductsResultType,
-  ProductsType,
 } from "@/components/Type/Products.type";
+import { FaHeart } from "react-icons/fa";
 
 type DetailsProps = {
   product: ProductsResultType;
 };
 
 function Details({ product }: DetailsProps) {
+  const [color, setColor] = useState<string>("");
+  const [count, setCount] = useState<string>("1");
+  const [like, setLike] = useState<boolean>(false);
+
+  const buyHandler = async () => {};
+
+  const likeHandler = async () => {
+    setLike((prev) => !prev);
+  };
   return (
     <>
       <div className="container grid grid-cols-1 h-fit grid-rows-1 md:grid-cols-2 md:grid-rows-2 xl:grid-cols-3 xl:grid-rows-1 gap-x-9">
@@ -46,7 +55,7 @@ function Details({ product }: DetailsProps) {
           </div>
         </div>
         {/* image */}
-        <ImageZoom img={product.img}/>
+        <ImageZoom img={product.img} />
         {/* details main */}
         <div className="flex w-full h-96 flex-col justify-between">
           {/* title */}
@@ -126,30 +135,63 @@ function Details({ product }: DetailsProps) {
             {/* price */}
             <div className="flex w-full items-center justify-between">
               <div className="gap-y-5">
-                <h2 className="text-3xl font-bold">582,250 تومان</h2>
-                <p className="text-primryGray line-through">685,000 تومان</p>
+                {product?.percent && (
+                  <>
+                    <h2 className="text-3xl font-bold">
+                      {(
+                        product.price -
+                        product.price * (product.percent / 100)
+                      ).toLocaleString()}{" "}
+                      تومان
+                    </h2>
+                    <p className="text-primryGray line-through">
+                      {product.price.toLocaleString()} تومان
+                    </p>
+                  </>
+                )}
+                {!product.percent && (
+                  <p className="text-3xl font-bold">
+                    {product.price.toLocaleString()} تومان
+                  </p>
+                )}
               </div>
-              <div className="text-white bg-primryCream2 py-3 px-2 rounded-md">
-                15%
-              </div>
+              {product.percent && (
+                <div className="text-white bg-primryCream2 py-3 px-2 rounded-md">
+                  {product.percent}%
+                </div>
+              )}
             </div>
             {/* select color */}
-            <div className="w-full mt-8">
-              <label htmlFor="color"></label>
-              <select className="w-full outline-none" name="" id="color">
-                <option value="">انتخاب رنگ</option>
-                <option value="red">red</option>
-                <option value="yellow">yellow</option>
-                <option value="pink">pink</option>
-              </select>
-            </div>
+            {product.color.length > 0 && (
+              <div className="w-full mt-8">
+                <label htmlFor="color"></label>
+                <select
+                  className="w-full outline-none"
+                  onChange={(e) => setColor(e.target.value)}
+                  value={color}
+                  name=""
+                  id="color"
+                >
+                  <option value="-1">انتخاب رنگ</option>
+                  {product.color.map((item, index) => (
+                    <option key={index} value={item}>
+                      {item.slice(1)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
           </div>
           {/* buttons */}
           <div className="w-full flex items-center justify-between mt-5">
             <div className="flex items-center justify-around bg-primryCream2 text-white w-full py-3 rounded-3xl">
-              <div className="w-full text-center">افزودن به سبد خرید</div>
+              <button onClick={buyHandler} className="w-full text-center">
+                افزودن به سبد خرید
+              </button>
               <div className="flex items-center gap-x-1 lg:w-[10%] xl:w-[20%] border-r border-white pr-3">
                 <select
+                  value={count}
+                  onChange={(e) => setCount(e.target.value)}
                   className="bg-inherit outline-none child:text-black"
                   name=""
                   id=""
@@ -167,8 +209,13 @@ function Details({ product }: DetailsProps) {
                 </select>
               </div>
             </div>
-            <div className="text-4xl">
-              <CiHeart />
+            <div
+              onClick={() => likeHandler()}
+              className={`${
+                like ? "text-red-600" : "text-gray-400/50"
+              } text-3xl cursor-pointer transition-colors`}
+            >
+              <FaHeart />
             </div>
           </div>
           {/* orginalize */}
@@ -177,7 +224,7 @@ function Details({ product }: DetailsProps) {
               <span>
                 <BsPatchCheck className="text-green-700" />
               </span>
-              <span>برند PIPPA</span>
+              <span>برند {product.brand}</span>
             </Link>
             <Link href={"/"} className="flex items-center gap-x-2">
               <span>
@@ -204,7 +251,7 @@ function Details({ product }: DetailsProps) {
       <div className="fixed md:hidden bottom-[64px] w-full h-16 bg-white z-40">
         <div className="container w-full flex items-center justify-between gap-x-2 sm:gap-x-28">
           {/* button */}
-          <div className="flex items-center justify-around bg-primryCream2 text-white w-full py-2 rounded-3xl">
+          <div className="flex items-center justify-around bg-primryCream2 text-white w-full py-2 mt-2 rounded-3xl">
             <div className="w-full text-center text-xs sm:text-base">
               افزودن به سبد خرید
             </div>
@@ -213,6 +260,8 @@ function Details({ product }: DetailsProps) {
                 className="bg-inherit outline-none child:text-black"
                 name=""
                 id=""
+                value={count}
+                onChange={(e) => setCount(e.target.value)}
               >
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -230,14 +279,32 @@ function Details({ product }: DetailsProps) {
           {/* price */}
           <div className="w-[150px] xs:w-[552px] sm:w-[40%]">
             <div className="flex flex-col w-full items-center justify-between">
-              <h2 className="text-xs xs:text-lg font-bold">582,250 تومان</h2>
+              {product?.percent && (
+                <>
+                  <h2 className="text-xs xs:text-lg font-bold">
+                    {(
+                      product.price -
+                      product.price * (product.percent / 100)
+                    ).toLocaleString()}{" "}
+                    تومان
+                  </h2>
+                  <p className="text-primryGray text-xs xs:text-sm line-through">
+                    {product.price.toLocaleString()} تومان
+                  </p>
+                </>
+              )}
+
               <div className="flex items-center justify-between gap-y-5 gap-x-2">
-                <div className="text-white text-xxs xs:text-xs sm:text-sm bg-primryCream2 py-2 px-1 rounded-md">
-                  15%
-                </div>
-                <p className="text-primryGray text-xs xs:text-sm line-through">
-                  685,000 تومان
-                </p>
+                {product.percent && (
+                  <div className="text-white text-xxs xs:text-xs sm:text-sm bg-primryCream2 py-2 px-1 rounded-md">
+                    {product.percent}%
+                  </div>
+                )}
+                {!product.percent && (
+                  <p className="text-xs xs:text-lg font-bold">
+                    {product.price.toLocaleString()} تومان
+                  </p>
+                )}
               </div>
             </div>
           </div>
