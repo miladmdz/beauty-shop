@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageTitle from "../../../modules/BreadCrumbs/pageTitle";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
@@ -21,6 +21,40 @@ function AddProduct() {
   const [tags, setTags] = useState<string>("");
   const [color, setColors] = useState<string>("");
   const [img, setImg] = useState<any>({});
+
+  const [departments, setDepartments] = useState<{}[]>([]);
+  const [subDepartments, setSubDepartments] = useState<{}[]>([]);
+
+  const [departmentsId, setDepartmentsId] = useState<string>("");
+  const [subDepartmentsItem, setSubDepartmentsItem] = useState<{}[]>([]);
+
+  useEffect(() => {
+    console.log(subDepartmentsItem);
+  }, [subDepartmentsItem]);
+
+  useEffect(() => {
+    const getDepartment = async () => {
+      const res = await fetch("/api/product/department");
+      const data = await res.json();
+      setDepartments([...data]);
+    };
+    getDepartment();
+  }, []);
+
+  useEffect(() => {
+    const getSubDep = async () => {
+      const res = await fetch(`/api/product/department/sub/${departmentsId}`);
+      if (res.status === 200) {
+        const data = await res.json();
+        setSubDepartments([...data]);
+      }
+    };
+    getSubDep();
+  }, [departmentsId]);
+
+  const selectOption = (e: string[]) => {
+    console.log(e);
+  };
 
   const submitHandler = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -44,7 +78,7 @@ function AddProduct() {
     formData.append("tags", tags);
     formData.append("color", color);
     formData.append("img", img);
-    const res = await fetch("/api/product/add", {
+    const res = await fetch("/api/product/add-product", {
       method: "POST",
       body: formData,
     });
@@ -243,14 +277,52 @@ function AddProduct() {
           <label className="font-bold pt-4" htmlFor="tags">
             تگ های محصول
           </label>
-          <input
-            value={tags}
-            onChange={(e) => setTags(e.target.value)}
+          <select
+            onChange={(e) => setDepartmentsId(e.target.value)}
+            name=""
             id="tags"
             className="w-full outline-none border-2 border-primryCream2 rounded-md px-1 py-1"
-            type="text"
-            placeholder="مثال:کرم,ضدافتاب,مراقبت از پوست"
-          />
+          >
+            <option value="-1">یک گزینه را انتخاب کنید</option>
+            {departments.map((item) => (
+              <option value={(item as { _id: string })._id}>
+                {(item as { title: string }).title}
+              </option>
+            ))}
+          </select>
+        </div>
+        {/* sub tags */}
+        <div className="w-[49%] flex flex-col items-start gap-y-2">
+          <label className="font-bold pt-4" htmlFor="tags">
+            تگ های زیر مجموعه محصول
+          </label>
+          <div className="w-full h-10 flex items-center justify-between">
+            <select
+              onChange={(e) => selectOption([e.target.value])}
+              name=""
+              id="tags"
+              className="w-[49%] outline-none border-2 border-primryCream2 rounded-md px-1 py-1"
+            >
+              <option value="-1">یک گزینه را انتخاب کنید</option>
+              {subDepartments.length > 0 &&
+                subDepartments.map((item) => (
+                  <option
+                    value={[
+                      (item as { departmentCategories: string })
+                        .departmentCategories,
+                      (item as { title: string }).title,
+                    ]}
+                  >
+                    {(item as { title: string }).title}
+                  </option>
+                ))}
+            </select>
+            <div className="w-[49%] h-10 border-2 border-primryCream2 rounded-md px-1 py-1">
+              {/* {subDepartmentsItem.map((item) => (
+                <div>{(item as { title: string }).title}</div>
+              ))} */}
+            </div>
+          </div>
         </div>
         {/* colors */}
         <div className="w-[49%] flex flex-col items-start gap-y-2">
