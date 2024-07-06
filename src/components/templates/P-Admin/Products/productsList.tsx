@@ -24,7 +24,7 @@ function ProductsList({ products }: ProductListProps) {
       denyButtonText: "خیر",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const res = await fetch("/api/product/remove", {
+        const res = await fetch("/api/product/remove-product", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ ID }),
