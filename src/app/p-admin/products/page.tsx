@@ -15,7 +15,7 @@ const page = async () => {
       <NavBar />
       <AdminPanelLayout>
         <div className="container">
-          <AddProduct />
+          <AddProduct/>
           <ProductsList products={products} />
         </div>
       </AdminPanelLayout>
