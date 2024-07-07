@@ -52,6 +52,22 @@ const schema = new mongoose.Schema(
       required: true,
       type: String,
     },
+    countery: {
+      required: true,
+      type: String,
+    },
+    box: {
+      required: true,
+      type: String,
+    },
+    expOpen: {
+      required: true,
+      type: String,
+    },
+    expCompany: {
+      required: true,
+      type: String,
+    },
     specific: {
       required: true,
       type: [String],
@@ -60,13 +76,18 @@ const schema = new mongoose.Schema(
       required: true,
       type: String,
     },
-    tags: {
+    department: {
+      required: true,
+      type: String,
+    },
+    subDepartment: {
       required: true,
       type: [String],
     },
     color: {
       required: true,
-      type: [String],
+      type: [],
+      default: [],
     },
     img: {
       required: true,
