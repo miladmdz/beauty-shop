@@ -1,21 +1,23 @@
-import AdminPanelLayout from '@/components/layouts/adminPanelLayout'
-import Footer from '@/components/modules/Footer/Footer'
-import NavBar from '@/components/modules/NavBar/NavBar'
-import Details from '@/components/templates/P-Admin/Users/details'
-import React from 'react'
+import AdminPanelLayout from "@/components/layouts/adminPanelLayout";
+import Footer from "@/components/modules/Footer/Footer";
+import NavBar from "@/components/modules/NavBar/NavBar";
+import Details from "@/components/templates/P-Admin/Users/details";
+import userModel from "@/model/User";
+import React from "react";
 
-function page() {
+const page = async () => {
+  const users=await userModel.find({})
   return (
     <>
-    <NavBar />
+      <NavBar />
       <AdminPanelLayout>
-        <div className='container'>
-          <Details/>
+        <div className="container">
+          <Details users={users}/>
         </div>
       </AdminPanelLayout>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;
