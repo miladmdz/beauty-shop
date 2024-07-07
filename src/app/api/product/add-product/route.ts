@@ -20,12 +20,15 @@ export async function POST(req: NextRequest) {
     const weight = formData.get("weight");
     const specific = (formData.get("specific") as string).split(",");
     const smell = formData.get("smell");
-    const tags = (formData.get("tags") as string).split(",");
+    const department = formData.get("department");
+    const subDepartment = (formData.get("subDepartment") as string).split(",")
     const color = (formData.get("color") as string).split(",");
+    const color2 = formData.get("color") 
     const img = formData.get("img");
     
 
     console.log(color);
+    console.log(color2);
 
     let buffer = Buffer.from(await (img as File).arrayBuffer());
     let fileName = Date.now() + (img as File).name;
@@ -47,7 +50,8 @@ export async function POST(req: NextRequest) {
       weight,
       specific,
       smell,
-      tags,
+      department,
+      subDepartment,
       color,
       img: `http://localhost:3000/uploads/${fileName}`,
       rate: 5,
