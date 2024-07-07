@@ -7,6 +7,7 @@ import DataBox from "@/components/templates/P-User/Boxs/dataBox";
 import React from "react";
 
 function page() {
+  
   return (
     <div>
       <NavBar />
