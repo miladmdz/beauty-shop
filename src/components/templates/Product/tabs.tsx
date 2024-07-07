@@ -4,8 +4,13 @@ import Comments from "./comments";
 import AskAndAnswer from "./askAndAnswer";
 import Video from "./video";
 import { FaPlus, FaMinus } from "react-icons/fa6";
+import { ProductsResultType } from "@/components/Type/Products.type";
 
-function Tabs() {
+type TabsProps = {
+  product: ProductsResultType;
+};
+
+function Tabs({ product }: TabsProps) {
   const [select, setSelect] = useState<string>("توضیحات محصول");
   const [selectMobile, setSelectMobile] = useState<string>("");
 
@@ -74,51 +79,9 @@ function Tabs() {
             } `}
           >
             <h2 className="text-2xl font-bold py-5">
-              توضیحات "رژلب مات انوی پیپا"
+              توضیحات "{product.nameFa}"
             </h2>
-            <p className="">
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-              استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
-              در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
-              نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
-              کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان
-              جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای
-              طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
-              فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری
-              موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد
-              نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل
-              دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.لورم ایپسوم متن
-              ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
-              گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان
-              که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-              متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت
-              و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
-              طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-              الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
-              صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و
-              شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
-              دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
-              اساسا مورد استفاده قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی
-              نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و
-              متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
-              شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود
-              ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال
-              و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم
-              افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
-              خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان
-              امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت
-              تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی،
-              و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده
-              قرار گیرد.لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-              چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه
-              روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
-              تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای
-              کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده،
-              شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت
-              بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ
-              پیشرو در زبان فارسی ایجاد کرد، در اینبا استفاده از طراحان گرافیک
-              است، چاپگرها و متون بلکه روزنامه و مجله در قرار گیرد.
-            </p>
+            <p className="">{product.longDesc}</p>
           </div>
           {/* Specific */}
           <div
@@ -127,7 +90,7 @@ function Tabs() {
             } `}
           >
             <h2 className="text-2xl font-bold py-5">
-              مشخصات "رژلب مات انوی پیپا"
+              مشخصات "{product.nameFa}"
             </h2>
             <div className="flex items-start gap-x-14">
               <ul className="child:font-bold child:my-5 w-[220px]">
@@ -142,7 +105,7 @@ function Tabs() {
                 <li className="my-5">با جعبه - بدون سلفون</li>
                 <li className="mt-6">18 ماه</li>
                 <li className="mt-9">درج نشده است.</li>
-                <li className="mt-12">4.5 گرم</li>
+                <li className="mt-12">{product.weight}</li>
               </ul>
             </div>
           </div>
@@ -151,23 +114,9 @@ function Tabs() {
             className={`${select !== "ترکیبات" ? "hidden" : "fadein_anime"} `}
           >
             <h2 className="text-2xl font-bold py-5">
-              ترکیبات "رژلب مات انوی پیپا"
+              ترکیبات "{product.nameFa}"
             </h2>
-            <p>
-              ترکيبات محصولاتی که ارسال می شود ممکن است بر حسب سری ساخت کمی با
-              آنچه در اينجا می بينيد متفاوت باشد. براي اطلاع دقيق با پشتيبانی
-              سايت در ارتباط باشيد.
-              <br />
-              <br />
-              پنتا اریتریتیل، میکا، پلی اتیلن، C12-15 آلکیل بنزوات،
-              OCTYLDODECANOL، ایزوستیل استئارات، CI 77891 (دی اکسید تیتانیوم
-              کوپلیمر VP/Eicosene، فلورفلوگوپیت مصنوعی، آروما، کاپریل گلیکول،
-              اوریزانول، توکوفریل استات، کره بوتیروسپرموم پارکی (کره روغنی)،
-              روغن دانه (پنبه) روغن دانه)، روغن دانه هلیانتوس آنووس (روغن دانه
-              هلیانتوس آنووس (آفتابگردان)، توکوفرول، لسیتین، پالمیتات آسکوربیل،
-              گلیسریل استراتل، گلیسریل، گلیسریل، گلیسریل، گلیسریل، گلیسریل،
-              گلیسریل، گلیسریل، گلیسریل، لسیتین، لسیتین، اسید سیتریک، BHA ، BHT.
-            </p>
+            <p>{product.Compounds}</p>
           </div>
           {/* How to use */}
           <div
@@ -176,12 +125,11 @@ function Tabs() {
             } `}
           >
             <h2 className="text-2xl font-bold py-5">
-              طرز استفاده از "رژلب مات انوی پیپا"
+              طرز استفاده از "{product.nameFa}"
             </h2>
             <ul className="mr-4 list-disc">
               <li>
-                رژ لب انوی پیپا را به همراه مداد لب هم تناژ رژ لبتان استفاده
-                کنید.
+               {product.howToUse}
               </li>
             </ul>
           </div>
@@ -227,7 +175,9 @@ function Tabs() {
               onClick={() => menuMobileHandler("توضیحات محصول")}
               className="flex w-full items-center justify-between cursor-pointer"
             >
-              <div className="text-sm xs:text-lg font-bold my-3">توضیحات محصول</div>
+              <div className="text-sm xs:text-lg font-bold my-3">
+                توضیحات محصول
+              </div>
               <div className="text-primryCream">
                 <FaPlus
                   className={`${
@@ -302,7 +252,9 @@ function Tabs() {
               onClick={() => menuMobileHandler("مشخصات محصول")}
               className="flex w-full items-center justify-between cursor-pointer"
             >
-              <div className="text-sm xs:text-lg font-bold my-3">مشخصات محصول</div>
+              <div className="text-sm xs:text-lg font-bold my-3">
+                مشخصات محصول
+              </div>
               <div className="text-primryCream">
                 <FaPlus
                   className={`${
@@ -392,7 +344,9 @@ function Tabs() {
               onClick={() => menuMobileHandler("طرز استفاده")}
               className="flex w-full items-center justify-between cursor-pointer"
             >
-              <div className="text-sm xs:text-lg font-bold my-3">طرز استفاده</div>
+              <div className="text-sm xs:text-lg font-bold my-3">
+                طرز استفاده
+              </div>
               <div className="text-primryCream">
                 <FaPlus
                   className={`${
@@ -429,7 +383,9 @@ function Tabs() {
               onClick={() => menuMobileHandler("نظرات کاربران")}
               className="flex w-full items-center justify-between cursor-pointer"
             >
-              <div className="text-sm xs:text-lg font-bold my-3">نظرات کاربران</div>
+              <div className="text-sm xs:text-lg font-bold my-3">
+                نظرات کاربران
+              </div>
               <div className="text-primryCream">
                 <FaPlus
                   className={`${
@@ -449,7 +405,9 @@ function Tabs() {
                 selectMobile !== "نظرات کاربران" ? "hidden" : "fadein_anime"
               }  w-full`}
             >
-              <h2 className="text-lg xs:text-2xl font-bold py-5">نظرات کاربران</h2>
+              <h2 className="text-lg xs:text-2xl font-bold py-5">
+                نظرات کاربران
+              </h2>
               <Comments />
             </div>
           </div>
@@ -459,7 +417,9 @@ function Tabs() {
               onClick={() => menuMobileHandler("پرسش و پاسخ")}
               className="flex w-full items-center justify-between cursor-pointer"
             >
-              <div className="text-sm xs:text-lg font-bold my-3">پرسش و پاسخ</div>
+              <div className="text-sm xs:text-lg font-bold my-3">
+                پرسش و پاسخ
+              </div>
               <div className="text-primryCream">
                 <FaPlus
                   className={`${
@@ -491,7 +451,9 @@ function Tabs() {
               onClick={() => menuMobileHandler("ویدیو و تیزر")}
               className="flex w-full items-center justify-between cursor-pointer"
             >
-              <div className="text-sm xs:text-lg font-bold my-3">ویدیو و تیزر</div>
+              <div className="text-sm xs:text-lg font-bold my-3">
+                ویدیو و تیزر
+              </div>
               <div className="text-primryCream">
                 <FaPlus
                   className={`${
