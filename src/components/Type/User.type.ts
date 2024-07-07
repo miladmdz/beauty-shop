@@ -11,5 +11,4 @@ export type UserType = {
   role: string;
   createdAt: string;
   updatedAt: string;
-  __v: number;
 };
