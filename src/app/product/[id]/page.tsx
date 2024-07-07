@@ -98,7 +98,7 @@ const page = async ({ params }: PageProps) => {
       <NavBar />
       <Road route={`${product.nameFa}`} />
       <Details product={product} />
-      <Tabs />
+      <Tabs product={product}/>
       <div className="container">
         <SuggestProducts products={productsNews} title="محصولات مرتبط" />
       </div>
