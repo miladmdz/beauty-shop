@@ -6,9 +6,7 @@ import { TfiCommentAlt } from "react-icons/tfi";
 import { IoStar, IoStarOutline } from "react-icons/io5";
 import Link from "next/link";
 import ImageZoom from "./imageZoom";
-import {
-  ProductsResultType,
-} from "@/components/Type/Products.type";
+import { ProductsResultType } from "@/components/Type/Products.type";
 import { FaHeart } from "react-icons/fa";
 
 type DetailsProps = {
@@ -91,7 +89,7 @@ function Details({ product }: DetailsProps) {
             </div>
           </div>
           {/* colors */}
-          {product.color.length > 0 && (
+          {product.color.length > 0 && product.color[0] && (
             <div className="flex items-start gap-1 flex-wrap w-full mt-5 fit">
               {product.color.map((item, index) => (
                 <div
@@ -162,7 +160,7 @@ function Details({ product }: DetailsProps) {
               )}
             </div>
             {/* select color */}
-            {product.color.length > 0 && (
+            {product.color.length > 0 && product.color[0] && (
               <div className="w-full mt-8">
                 <label htmlFor="color"></label>
                 <select
