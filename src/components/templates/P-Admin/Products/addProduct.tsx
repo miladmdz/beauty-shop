@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import PageTitle from "../../../modules/BreadCrumbs/pageTitle";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import { IoClose } from "react-icons/io5";
 
 function AddProduct() {
   const router = useRouter();
@@ -16,9 +17,14 @@ function AddProduct() {
   const [Compounds, setCompoundes] = useState<string>("");
   const [howToUse, setHowToUse] = useState<string>("");
   const [weight, setWeight] = useState<string>("");
+  const [countery, setCountery] = useState<string>("");
+  const [box, setBox] = useState<string>("");
+  const [expOpen, setExpOpen] = useState<string>("");
+  const [expCompany, setExpCompany] = useState<string>("");
   const [specific, setSpecific] = useState<string>("");
   const [smell, setSmell] = useState<string>("");
   const [tags, setTags] = useState<string>("");
+  const [subTags, setSubTags] = useState<string[]>([]);
   const [color, setColors] = useState<string>("");
   const [img, setImg] = useState<any>({});
 
@@ -27,10 +33,6 @@ function AddProduct() {
 
   const [departmentsId, setDepartmentsId] = useState<string>("");
   const [subDepartmentsItem, setSubDepartmentsItem] = useState<{}[]>([]);
-
-  useEffect(() => {
-    console.log(subDepartmentsItem);
-  }, [subDepartmentsItem]);
 
   useEffect(() => {
     const getDepartment = async () => {
@@ -52,8 +54,20 @@ function AddProduct() {
     getSubDep();
   }, [departmentsId]);
 
-  const selectOption = (e: string[]) => {
-    console.log(e);
+  const selectOption = (Id: string) => {
+    setSubDepartmentsItem((prev) => [
+      ...prev,
+      ...subDepartments.filter((item) => (item as { _id: string })._id === Id),
+    ]);
+    setTags(departmentsId);
+    setSubTags((prev) => [...prev, Id]);
+  };
+
+  const removeSubHandler = (id: string) => {
+    setSubDepartmentsItem((prev) =>
+      prev.filter((item) => (item as { _id: string })._id !== id)
+    );
+    setSubTags((prev) => prev.filter((item) => item !== id));
   };
 
   const submitHandler = async (
@@ -61,57 +75,100 @@ function AddProduct() {
   ) => {
     e.preventDefault();
 
-    console.log(img);
+    //validation
 
-    const formData = new FormData();
-    formData.append("nameFa", nameFa);
-    formData.append("nameEn", nameEn);
-    formData.append("brand", brand);
-    formData.append("price", price);
-    formData.append("shortDesc", shortDesc);
-    formData.append("longDesc", longDesc);
-    formData.append("Compounds", Compounds);
-    formData.append("howToUse", howToUse);
-    formData.append("weight", weight);
-    formData.append("specific", specific);
-    formData.append("smell", smell);
-    formData.append("tags", tags);
-    formData.append("color", color);
-    formData.append("img", img);
-    const res = await fetch("/api/product/add-product", {
-      method: "POST",
-      body: formData,
-    });
-    if (res.status === 201) {
-      setNamefa("");
-      setNameEn("");
-      setBrand("");
-      setPrice("");
-      setLongDesc("");
-      setShoertDesc("");
-      setCompoundes("");
-      setHowToUse("");
-      setWeight("");
-      setSpecific("");
-      setSmell("");
-      setTags("");
-      setColors("");
-      setImg("");
-      Swal.fire({
-        icon: "success",
-        title: "محصول با موفقیت اضافه شد",
-        showConfirmButton: true,
-        confirmButtonText: "متوجه شدم",
-      }).then((result) => {
-        router.refresh();
-      });
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "مشکل از سمت سرور ",
+    if (
+      nameFa.length == 0 ||
+      nameEn.length == 0 ||
+      brand.length == 0 ||
+      price.length == 0 ||
+      longDesc.length == 0 ||
+      shortDesc.length == 0 ||
+      Compounds.length == 0 ||
+      howToUse.length == 0 ||
+      weight.length == 0 ||
+      countery.length == 0 ||
+      box.length == 0 ||
+      expOpen.length == 0 ||
+      expCompany.length == 0 ||
+      specific.length == 0 ||
+      smell.length == 0 ||
+      tags === "-1" ||
+      subTags.length === 0 ||
+      img.length == 0
+    ) {
+      return Swal.fire({
+        icon: "warning",
+        title: "کامل نبودن اطلاعات",
+        text: "تمامی فیلد ها اجباری هستند برای پر کردن به جز فیلد مربوط به رنگ محصولات",
         showConfirmButton: true,
         confirmButtonText: "تلاش مجدد",
       });
+    } else {
+      console.log("object");
+      const formData = new FormData();
+      formData.append("nameFa", nameFa);
+      formData.append("nameEn", nameEn);
+      formData.append("brand", brand);
+      formData.append("price", price);
+      formData.append("shortDesc", shortDesc);
+      formData.append("longDesc", longDesc);
+      formData.append("Compounds", Compounds);
+      formData.append("howToUse", howToUse);
+      formData.append("weight", weight);
+      formData.append("specific", specific);
+      formData.append("smell", smell);
+      formData.append("department", tags);
+      formData.append("subDepartment", subTags.join(","));
+      formData.append("color", color);
+      formData.append("img", img);
+      formData.append("countery", countery);
+      formData.append("box", box);
+      formData.append("expOpen", expOpen);
+      formData.append("expCompany", expCompany);
+      const res = await fetch("/api/product/add-product", {
+        method: "POST",
+        body: formData,
+      });
+      if (res.status === 201) {
+        setNamefa("");
+        setNameEn("");
+        setBrand("");
+        setPrice("");
+        setLongDesc("");
+        setShoertDesc("");
+        setCompoundes("");
+        setHowToUse("");
+        setWeight("");
+        setSpecific("");
+        setSmell("");
+        setTags("");
+        setColors("");
+        setImg("");
+        setDepartments([]);
+        setSubDepartments([]);
+        setSubDepartmentsItem([]);
+        setDepartmentsId("");
+        setCountery("");
+        setBox("");
+        setExpOpen("");
+        setExpCompany("");
+        Swal.fire({
+          icon: "success",
+          title: "محصول با موفقیت اضافه شد",
+          showConfirmButton: true,
+          confirmButtonText: "متوجه شدم",
+        }).then((result) => {
+          router.refresh();
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "مشکل از سمت سرور ",
+          showConfirmButton: true,
+          confirmButtonText: "تلاش مجدد",
+        });
+      }
     }
   };
 
@@ -285,7 +342,10 @@ function AddProduct() {
           >
             <option value="-1">یک گزینه را انتخاب کنید</option>
             {departments.map((item) => (
-              <option value={(item as { _id: string })._id}>
+              <option
+                key={(item as { _id: string })._id}
+                value={(item as { _id: string })._id}
+              >
                 {(item as { title: string }).title}
               </option>
             ))}
@@ -298,7 +358,7 @@ function AddProduct() {
           </label>
           <div className="w-full h-10 flex items-center justify-between">
             <select
-              onChange={(e) => selectOption([e.target.value])}
+              onChange={(e) => selectOption(e.target.value)}
               name=""
               id="tags"
               className="w-[49%] outline-none border-2 border-primryCream2 rounded-md px-1 py-1"
@@ -307,20 +367,30 @@ function AddProduct() {
               {subDepartments.length > 0 &&
                 subDepartments.map((item) => (
                   <option
-                    value={[
-                      (item as { departmentCategories: string })
-                        .departmentCategories,
-                      (item as { title: string }).title,
-                    ]}
+                    key={(item as { _id: string })._id}
+                    value={(item as { _id: string })._id}
                   >
                     {(item as { title: string }).title}
                   </option>
                 ))}
             </select>
-            <div className="w-[49%] h-10 border-2 border-primryCream2 rounded-md px-1 py-1">
-              {/* {subDepartmentsItem.map((item) => (
-                <div>{(item as { title: string }).title}</div>
-              ))} */}
+            <div className="w-[49%] flex flex-col gap-y-2 items-center overflow-y-scroll h-14 border-2 border-primryCream2 rounded-md px-1 py-1">
+              {subDepartmentsItem.map((item) => (
+                <div
+                  className="w-full py-2 px-1 flex items-center justify-between bg-gray-400/50 rounded-md"
+                  key={(item as { _id: string })._id}
+                >
+                  <p>{(item as { title: string }).title}</p>
+                  <div
+                    className="cursor-pointer hover:text-red-500 transition-all"
+                    onClick={() =>
+                      removeSubHandler((item as { _id: string })._id)
+                    }
+                  >
+                    <IoClose />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -350,6 +420,63 @@ function AddProduct() {
             type="file"
           />
         </div>
+        {/* country */}
+        <div className="w-[49%] flex flex-col items-start gap-y-2">
+          <label className="font-bold pt-4" htmlFor="colors">
+            کشور سازنده
+          </label>
+          <input
+            value={countery}
+            onChange={(e) => setCountery(e.target.value)}
+            id="colors"
+            className="w-full outline-none border-2 border-primryCream2 rounded-md px-1 py-1"
+            type="text"
+            placeholder="کشور سازنده"
+          />
+        </div>
+        {/* box */}
+        <div className="w-[49%] flex flex-col items-start gap-y-2">
+          <label className="font-bold pt-4" htmlFor="colors">
+            نوع بسته بندی
+          </label>
+          <input
+            value={box}
+            onChange={(e) => setBox(e.target.value)}
+            id="colors"
+            className="w-full outline-none border-2 border-primryCream2 rounded-md px-1 py-1"
+            type="text"
+            placeholder="نوع بسته بندی"
+          />
+        </div>
+        {/* exp open  */}
+        <div className="w-[49%] flex flex-col items-start gap-y-2">
+          <label className="font-bold pt-4" htmlFor="colors">
+            تاریخ انقضا بعد از باز کردن درب محصول
+          </label>
+          <input
+            value={expOpen}
+            onChange={(e) => setExpOpen(e.target.value)}
+            id="colors"
+            className="w-full outline-none border-2 border-primryCream2 rounded-md px-1 py-1"
+            type="text"
+            placeholder="تاریخ انقضا بعد از باز کردن درب محصول"
+          />
+        </div>
+        {/* exp company  */}
+        <div className="w-[49%] flex flex-col items-start gap-y-2">
+          <label className="font-bold pt-4" htmlFor="colors">
+            تاریخ انقضا درج شده توسط کارخانه
+          </label>
+          <input
+            value={expCompany}
+            onChange={(e) => setExpCompany(e.target.value)}
+            id="colors"
+            className="w-full outline-none border-2 border-primryCream2 rounded-md px-1 py-1"
+            type="text"
+            placeholder="تاریخ انقضا بعد از باز کردن درب محصول"
+          />
+        </div>
+        {/* btn submit */}
         <button
           onClick={(e) => submitHandler(e)}
           className="w-40 h-10 mt-10 rounded-md flex justify-center items-center bg-primryCream2 text-white"
