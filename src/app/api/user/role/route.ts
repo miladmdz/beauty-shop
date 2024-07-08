@@ -11,7 +11,6 @@ export async function POST(req: NextRequest) {
 
     const { id } = body;
 
-    console.log(id);
 
     if (!isValidObjectId(id)) {
       return Response.json(
