@@ -11,7 +11,7 @@ function Details({products}:DetailsProps) {
     <div className='container flex flex-wrap gap-x-1 gap-y-3 xs:gap-4 justify-center mb-6'>
         {
             products.map(product=>(
-                <OfferBox {...product}/>
+                <OfferBox key={product.id} {...product}/>
             ))
         }
     </div>
