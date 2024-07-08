@@ -1,11 +1,17 @@
 "use client";
 import Map from "@/components/modules/Map/Map";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { FaInstagram, FaTelegram } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 
 function FooterMobile() {
+  const MapNew = useMemo(
+    () => dynamic(() => import("@/components/modules/Map/Map"), { ssr: false }),
+    []
+  );
+
   const [selectBox, setSelectBox] = useState<string>("");
 
   const menuHandler = (selected: string) => {
@@ -323,10 +329,7 @@ function FooterMobile() {
           } absolute flex my-3 flex-col items-center justify-between w-full h-fit transition-all duration-300 `}
         >
           <span className="w-full h-[150px]">
-            <Map
-              position={[35.72021225108499, 51.42222691580869]}
-              center={[35.72021225108499, 51.42222691580869]}
-            />
+            <MapNew />
           </span>
           <span>
             <p className="text-xxs leading-7 text-start md:w-[300px] lg:w-[400px] mt-4">
@@ -344,7 +347,8 @@ function FooterMobile() {
 
       <div
         className={`${
-          selectBox === "درباره کاج شاپ" && "mt-[400px] xs:mt-[350px] sm:mt-[300px]"
+          selectBox === "درباره کاج شاپ" &&
+          "mt-[400px] xs:mt-[350px] sm:mt-[300px]"
         } mt-0 transition-all duration-300 `}
       >
         <div

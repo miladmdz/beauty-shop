@@ -1,13 +1,19 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useMemo } from "react";
 import { LuPhone } from "react-icons/lu";
 import { CiMail, CiLocationOn } from "react-icons/ci";
 import { FaTelegram } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import Map from "@/components/modules/Map/Map";
+import dynamic from "next/dynamic";
 
 function Details() {
+  const MapNew = useMemo(
+    () => dynamic(() => import("@/components/modules/Map/Map"), { ssr: false }),
+    []
+  );
+
   return (
     <div className="container">
       {/* part top */}
@@ -85,10 +91,7 @@ function Details() {
       </div>
       {/* map */}
       <div className="w-full h-40 xs:h-80 my-10">
-        <Map
-          position={[35.72021225108499, 51.42222691580869]}
-          center={[35.72021225108499, 51.42222691580869]}
-        />
+        <MapNew />
       </div>
     </div>
   );
