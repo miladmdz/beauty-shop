@@ -66,7 +66,7 @@ function Detailes() {
       {/* list articles */}
       <div className="flex flex-wrap items-center justify-between child:w-[100%] xs:child:w-[40%] lg:child:w-[30%] child:my-5 mt-5">
         {articles.map((article) => (
-          <ArticleBox {...article} />
+          <ArticleBox key={article.id} {...article} />
         ))}
       </div>
     </div>

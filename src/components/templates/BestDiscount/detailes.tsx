@@ -87,7 +87,7 @@ function Detailes() {
   return (
     <div className="container grid grid-cols-2 sm:grid-cols-3 gap-3 xl:grid-cols-4 mb-8">
       {productsNews.map((product) => (
-        <DiscountBox {...product} />
+        <DiscountBox key={product.id} {...product} />
       ))}
     </div>
   );
