@@ -8,7 +8,6 @@ type ImageZoomProps = {
 };
 
 function ImageZoom({ img }: ImageZoomProps) {
-  console.log(img);
   return (
     <div className="flex w-full flex-col justify-start">
       <div className="flex items-center justify-center gap-x-7 child:cursor-pointer child:text-xl">

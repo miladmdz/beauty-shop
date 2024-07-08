@@ -42,7 +42,6 @@ function Details() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: emailPhone }),
       });
-      console.log(res);
       if (res.status === 201) {
         dispatch(updateEmail(emailPhone));
         router.push("login/send-password");

@@ -15,7 +15,6 @@ function Tabs({ product }: TabsProps) {
   const [selectMobile, setSelectMobile] = useState<string>("");
 
   const menuMobileHandler = (select: string) => {
-    console.log(select);
     if (selectMobile) {
       setSelectMobile("");
     } else {

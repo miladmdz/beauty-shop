@@ -105,7 +105,6 @@ function AddProduct() {
         confirmButtonText: "تلاش مجدد",
       });
     } else {
-      console.log("object");
       const formData = new FormData();
       formData.append("nameFa", nameFa);
       formData.append("nameEn", nameEn);

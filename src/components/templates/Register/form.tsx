@@ -110,12 +110,6 @@ function Form() {
       email,
       password: pass1,
     };
-    console.log(newUser);
-    console.log(valiFnameHandler);
-    console.log(valiLnameHandler);
-    console.log(validEmailHandler);
-    console.log(validPassHandler);
-    console.log(validPhoneHandler);
     //server status validations
     if (
       valiFnameHandler &&
@@ -124,7 +118,6 @@ function Form() {
       validPassHandler &&
       validPhoneHandler
     ) {
-      console.log("hello");
       const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {
