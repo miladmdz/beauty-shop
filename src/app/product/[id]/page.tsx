@@ -92,7 +92,6 @@ const page = async ({ params }: PageProps) => {
     { _id: ID },
     "-createdAt -updatedAt "
   );
-  console.log(product);
   return (
     <>
       <NavBar />

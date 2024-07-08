@@ -1,8 +1,8 @@
 import UserPanelLayout from "@/components/layouts/userPanelLayout";
+import PageTitle from "@/components/modules/BreadCrumbs/pageTitle";
 import Footer from "@/components/modules/Footer/Footer";
 import NavBar from "@/components/modules/NavBar/NavBar";
 import Details from "@/components/templates/P-User/Basket/details";
-import PageTitle from "@/components/modules/ArticleBox/pageTitle";
 import React from "react";
 
 function page() {
