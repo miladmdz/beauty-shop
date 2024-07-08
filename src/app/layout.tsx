@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "shop test",
   description: "This is first project with next",
   icons: {
-    icon: "./images/997555.png",
+    icon: "./images/Icon/Capture1.png",
   },
 };
 
