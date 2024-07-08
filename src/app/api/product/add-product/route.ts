@@ -25,10 +25,6 @@ export async function POST(req: NextRequest) {
     const color = (formData.get("color") as string).split(",");
     const color2 = formData.get("color") 
     const img = formData.get("img");
-    
-
-    console.log(color);
-    console.log(color2);
 
     let buffer = Buffer.from(await (img as File).arrayBuffer());
     let fileName = Date.now() + (img as File).name;

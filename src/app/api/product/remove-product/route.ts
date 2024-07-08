@@ -16,7 +16,6 @@ export async function POST(req: NextRequest) {
         { status: 422 }
       );
     }
-    console.log(isValidObjectId(ID));
 
     const product = await productsModel.findOneAndDelete({ _id: ID });
 
