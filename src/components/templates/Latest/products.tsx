@@ -78,7 +78,7 @@ function Products() {
     <div className="container mb-6">
       <div className="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 gap-y-6">
         {productsNews.map((products) => (
-          <ProductNewBox {...products} />
+          <ProductNewBox key={products.id} {...products} />
         ))}
       </div>
     </div>
