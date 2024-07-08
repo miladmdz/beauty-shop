@@ -15,13 +15,15 @@ const page = async () => {
       <NavBar />
       <AdminPanelLayout>
         <div className="container">
-          <AddProduct/>
-          <ProductsList products={products} />
+          <AddProduct />
+          <ProductsList products={JSON.parse(JSON.stringify(products))} />
         </div>
       </AdminPanelLayout>
       <Footer />
     </>
   );
 };
+
+
 
 export default page;
