@@ -24,9 +24,10 @@ function NavBar() {
   const [scroll, setScroll] = useState<number>(0);
 
   useEffect(() => {
-    const fixNavBarToTop = () => {
-      setScroll(window.scrollY);
-    };
+
+      const fixNavBarToTop = () => {
+        setScroll(window.scrollY);
+      };
 
     window.addEventListener("scroll", fixNavBarToTop);
 
@@ -44,10 +45,12 @@ function NavBar() {
   }, [scroll]);
 
   const scrollToTopHandler = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    if (typeof window !== "undefined") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   useEffect(() => {
