@@ -21,7 +21,6 @@ import {
   Companies,
   ProductsType,
 } from "@/components/Type/Products.type";
-import WidthHandler from "@/utils/WidthHandler";
 
 type ProductsProps = {
   products1?: ProductsType[];

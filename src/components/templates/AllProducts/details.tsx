@@ -19,18 +19,18 @@ function Details({ products }: DetailsProps) {
   const [sortMobile, setSortMobile] = useState<boolean>(false);
 
   useEffect(() => {
-    const scrollUser = () => {
-      let width = window.scrollY;
-      if (width > 105) {
-        setFixToTop(true);
-      } else {
-        setFixToTop(false);
-      }
-    };
+      const scrollUser = () => {
+        let width = window.scrollY;
+        if (width > 105) {
+          setFixToTop(true);
+        } else {
+          setFixToTop(false);
+        }
+      };
 
-    window.addEventListener("scroll", scrollUser);
+      window.addEventListener("scroll", scrollUser);
 
-    return () => window.removeEventListener("scroll", scrollUser);
+      return () => window.removeEventListener("scroll", scrollUser);
   }, []);
 
   useEffect(() => {
@@ -59,7 +59,9 @@ function Details({ products }: DetailsProps) {
           </h1>
         </div>
         <div className="relative pt-10 pb-16">
-          <p className="absolute left-0 right-0 mx-auto px-3 w-fit bg-white z-20">محصولات</p>
+          <p className="absolute left-0 right-0 mx-auto px-3 w-fit bg-white z-20">
+            محصولات
+          </p>
           <div className="absolute top-[52px] w-full h-px bg-gray-500/50"></div>
         </div>
         {/* details */}
@@ -1513,7 +1515,7 @@ function Details({ products }: DetailsProps) {
             {/* product */}
             <div className="w-full child:flex child:w-full gap-x-4 child:justify-center grid grid-cols-2 xs:grid-cols-3 mt-5 md:mt-0 gap-y-5">
               {products.map((product) => (
-                <ProductNewBox {...product} />
+                <ProductNewBox key={product.id} {...product} />
               ))}
             </div>
           </div>
