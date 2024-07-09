@@ -91,13 +91,14 @@ const page = async ({ params }: PageProps) => {
   const product = await productsModel.findOne(
     { _id: ID },
     "-createdAt -updatedAt "
-  );
+  ).populate("comments","-__v");
+
   return (
     <>
       <NavBar />
-      <Road route={`${product.nameFa}`} />
-      <Details product={product} />
-      <Tabs product={product}/>
+      <Road route={`${JSON.parse(JSON.stringify(product.nameFa))}`} />
+      <Details product={JSON.parse(JSON.stringify(product))} />
+      <Tabs product={JSON.parse(JSON.stringify(product))}/>
       <div className="container">
         <SuggestProducts products={productsNews} title="محصولات مرتبط" />
       </div>
