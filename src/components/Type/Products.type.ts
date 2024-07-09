@@ -1,3 +1,5 @@
+import { CommentType } from "./Comment.type";
+
 export type ProductsType = {
   id?: number;
   title?: string;
@@ -34,7 +36,7 @@ export type ProductsResultType = {
   color: string[];
   rate: number;
   sales: number;
-  comments?: string[];
+  comments?: CommentType[];
   likes?:string[]
 };
 export type ArticlesType = {
