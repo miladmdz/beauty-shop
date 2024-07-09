@@ -8,15 +8,27 @@ const schema = new mongoose.Schema(
       required: true,
       type: String,
     },
+    username: {
+      required: true,
+      type: String,
+    },
     auther: {
       required: true,
       type: mongoose.Types.ObjectId,
       ref: "User",
     },
-    products: {
+    score:{
+      required: true,
+      type: Number,
+    },
+    isAccept: {
+      required: true,
+      type: Boolean,
+    },
+    product: {
       required: true,
       type: mongoose.Types.ObjectId,
-      ref: "Products",
+      ref: "Product",
     },
   },
   {
