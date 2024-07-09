@@ -127,9 +127,7 @@ function Tabs({ product }: TabsProps) {
               طرز استفاده از "{product.nameFa}"
             </h2>
             <ul className="mr-4 list-disc">
-              <li>
-               {product.howToUse}
-              </li>
+              <li>{product.howToUse}</li>
             </ul>
           </div>
           {/* comments */}
@@ -139,7 +137,7 @@ function Tabs({ product }: TabsProps) {
             }  w-full`}
           >
             <h2 className="text-2xl font-bold py-5">نطرات کاربران</h2>
-            <Comments />
+            <Comments comments={product.comments}/>
           </div>
           {/* ask & answer */}
           <div
@@ -407,7 +405,7 @@ function Tabs({ product }: TabsProps) {
               <h2 className="text-lg xs:text-2xl font-bold py-5">
                 نظرات کاربران
               </h2>
-              <Comments />
+              <Comments comments={product.comments}/>
             </div>
           </div>
           {/* ask and answer */}
@@ -444,7 +442,7 @@ function Tabs({ product }: TabsProps) {
               <AskAndAnswer />
             </div>
           </div>
-          {/* vide */}
+          {/* video */}
           <div className="flex w-full flex-col ">
             <div
               onClick={() => menuMobileHandler("ویدیو و تیزر")}
