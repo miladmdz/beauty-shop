@@ -8,7 +8,10 @@ import React from "react";
 
 const page = async () => {
   connectToDB();
-  const comments = await commentModel.find({}).populate("auther","firstName lastName phone email").lean();
+  const comments = await commentModel
+    .find({})
+    .populate("auther", "firstName lastName phone email")
+    .lean();
 
   return (
     <>
