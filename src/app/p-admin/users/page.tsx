@@ -6,13 +6,13 @@ import userModel from "@/model/User";
 import React from "react";
 
 const page = async () => {
-  const users=await userModel.find({})
+  const users = await userModel.find({});
   return (
     <>
       <NavBar />
       <AdminPanelLayout>
         <div className="container">
-          <Details users={users}/>
+          <Details users={JSON.parse(JSON.stringify(users))} />
         </div>
       </AdminPanelLayout>
       <Footer />
