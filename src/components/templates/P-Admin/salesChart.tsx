@@ -1,6 +1,14 @@
 "use client";
 import React from "react";
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from "recharts";
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 function SalesChart() {
   const data = [
@@ -16,19 +24,17 @@ function SalesChart() {
     { month: "دی", sales: 600_000, pv: 2400, amt: 2400 },
     { month: "بهمن", sales: 2_000_000, pv: 2400, amt: 2400 },
     { month: "اسفند", sales: 2_500_000, pv: 2400, amt: 2400 },
-
   ];
   return (
-    <div className="w-full font-sans">
-      <h2 className="font-bold text-2xl text-primryCream2 py-4">نرخ فروش</h2>
+    <ResponsiveContainer width="100%" height="92.7%">
       <LineChart width={950} height={300} data={data}>
         <Line type="monotone" dataKey="sales" stroke="#f96" />
         <CartesianGrid stroke="#ccc" />
         <XAxis dataKey="month" />
         <YAxis />
-        <Tooltip/>
+        <Tooltip />
       </LineChart>
-    </div>
+    </ResponsiveContainer>
   );
 }
 

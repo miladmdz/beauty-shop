@@ -1,14 +1,13 @@
 "use client";
 import React from "react";
 import {
-  LineChart,
-  Line,
   CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
   Area,
   AreaChart,
+  ResponsiveContainer,
 } from "recharts";
 
 function GrowChart() {
@@ -27,8 +26,7 @@ function GrowChart() {
     { month: "اسفند", sales: 2_500_000 },
   ];
   return (
-    <div className="w-full flex flex-col font-sans">
-      <h2 className="font-bold text-2xl text-primryCream2 py-4">نرخ رشد</h2>
+    <ResponsiveContainer width="100%" height="92.7%">
       <AreaChart
         width={950}
         height={300}
@@ -38,10 +36,10 @@ function GrowChart() {
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <XAxis dataKey="month" />
         <YAxis />
-        <Tooltip/>
+        <Tooltip />
         <Area type="monotone" dataKey="sales" stroke="#f96" fill="#f4b19f" />
       </AreaChart>
-    </div>
+    </ResponsiveContainer>
   );
 }
 
