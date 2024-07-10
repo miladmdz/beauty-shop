@@ -7,7 +7,6 @@ import DataBox from "@/components/templates/P-User/Boxs/dataBox";
 import React from "react";
 
 function page() {
-  
   return (
     <div>
       <NavBar />
@@ -18,10 +17,20 @@ function page() {
           <DataBox title="مجموع سفارشات" value={0} />
           <DataBox title="مجموع کاربر های سایت" value={1} />
         </div>
-        <section className="container flex flex-col items-start gap-x-5">
-          <SalesChart />
-          <GrowChart />
-        </section>
+        <div className="container flex flex-col items-start gap-x-5">
+          <section className="w-full h-80 flex flex-col font-sans">
+            <h2 className="font-bold text-2xl text-primryCream2 py-4">
+              نرخ فروش
+            </h2>
+            <SalesChart />
+          </section>
+          <section className="w-full h-80 flex flex-col font-sans">
+            <h2 className="font-bold text-2xl text-primryCream2 py-4">
+              نرخ رشد
+            </h2>
+            <GrowChart />
+          </section>
+        </div>
       </AdminPanelLayout>
       <Footer />
     </div>
