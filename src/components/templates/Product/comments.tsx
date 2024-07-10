@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { SlCalender } from "react-icons/sl";
 import { CiClock2 } from "react-icons/ci";
