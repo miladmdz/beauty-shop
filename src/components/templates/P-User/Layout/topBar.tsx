@@ -14,7 +14,7 @@ const TopBar = async () => {
         <div>
           <img
             className="w-14 h-14 rounded-full"
-            src="./images/User/user.jpg"
+            src="../../images/User/user.jpg"
             alt="image profile user"
           />
         </div>
