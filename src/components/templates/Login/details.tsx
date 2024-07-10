@@ -57,7 +57,7 @@ function Details() {
           <div>
             <img
               className="w-8 xs:w-12"
-              src="./images/Icon/Capture1.png"
+              src="../images/Icon/Capture1.png"
               alt=""
             />
           </div>
