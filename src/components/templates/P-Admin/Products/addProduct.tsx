@@ -36,23 +36,23 @@ function AddProduct() {
 
   useEffect(() => {
     const getDepartment = async () => {
-      const res = await fetch("/api/product/department");
+      const res = await fetch("/api/product/department", {
+        method: "GET",
+      });
       const data = await res.json();
       setDepartments([...data]);
     };
     getDepartment();
   }, []);
 
-  useEffect(() => {
-    const getSubDep = async () => {
-      const res = await fetch(`/api/product/department/sub/${departmentsId}`);
-      if (res.status === 200) {
-        const data = await res.json();
-        setSubDepartments([...data]);
-      }
-    };
-    getSubDep();
-  }, [departmentsId]);
+  const setDepartmentIdHandler = async (id: string) => {
+    setDepartmentsId(id);
+    const res = await fetch(`/api/product/department/sub/${id}`);
+    if (res.status === 200) {
+      const data = await res.json();
+      setSubDepartments([...data]);
+    }
+  };
 
   const selectOption = (Id: string) => {
     setSubDepartmentsItem((prev) => [
@@ -334,7 +334,7 @@ function AddProduct() {
             تگ های محصول
           </label>
           <select
-            onChange={(e) => setDepartmentsId(e.target.value)}
+            onChange={(e) => setDepartmentIdHandler(e.target.value)}
             name=""
             id="tags"
             className="w-full outline-none border-2 border-primryCream2 rounded-md px-1 py-1"
