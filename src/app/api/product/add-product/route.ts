@@ -23,7 +23,6 @@ export async function POST(req: NextRequest) {
     const department = formData.get("department");
     const subDepartment = (formData.get("subDepartment") as string).split(",")
     const color = (formData.get("color") as string).split(",");
-    const color2 = formData.get("color") 
     const img = formData.get("img");
 
     let buffer = Buffer.from(await (img as File).arrayBuffer());
