@@ -8,6 +8,6 @@ const schema = new mongoose.Schema({
 });
 
 const departmentTicketModel =
-  mongoose.models.Department || mongoose.model("Department", schema);
+  mongoose.models.Departmentticket || mongoose.model("Departmentticket", schema);
 
 export default departmentTicketModel;
