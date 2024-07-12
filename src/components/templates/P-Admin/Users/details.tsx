@@ -87,7 +87,7 @@ function Details({ users }: DetailsProps) {
   const banUser = async (email: string, phone: number) => {
     Swal.fire({
       icon: "question",
-      title: "از تغییر نقش کاربر مطمین هستید؟؟",
+      title: "از بن کاربر مطمین هستید؟؟",
       showConfirmButton: true,
       showDenyButton: true,
       confirmButtonText: "بله",
