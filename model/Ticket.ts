@@ -30,6 +30,11 @@ const schema = new mongoose.Schema(
     subDepartment: {
       required: true,
       type: mongoose.Types.ObjectId,
+      ref: "Ticket",
+    },
+    mainTicket: {
+      required: false,
+      type: mongoose.Types.ObjectId,
       ref: "Subdepartmentticket",
     },
     priority: {
